@@ -1,13 +1,23 @@
+import Image from 'next/image';
 import React from 'react';
+import images from '../../constants/images';
 
 function Header() {
   return (
     <div
-      className="bg-blue-400 h-[156px] m-0"
-      style={{ width: 'calc(100vw - 64px)' }}
+      className="h-[156px] relative "
+      // style={{ width: '100vw' }}
     >
+      {/* Background Image */}
+      <Image
+        src={images.Header}
+        alt="Header Background"
+        fill // Fill the parent container
+        style={{ objectFit: 'cover' }} // Ensure the image covers the entire div
+      />
+
       {/* Placeholder Content */}
-      <div className="flex items-center justify-center h-full">
+      <div className="relative z-10 flex items-center justify-center h-full">
         <h1 className="text-white text-2xl font-bold">Header Content</h1>
       </div>
     </div>
