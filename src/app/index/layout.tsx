@@ -1,7 +1,6 @@
 
 import React from 'react';
-import SideBar from './SideBar';
-
+import Header from '@/Components/Header2'
 
 
 interface LayoutProps {
@@ -12,10 +11,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
-      
-      <SideBar />
-      {/* <Header /> */}
-      
+      <Header />
 
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto bg-gray-100">

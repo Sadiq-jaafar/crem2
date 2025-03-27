@@ -51,8 +51,8 @@ const SideBar: React.FC = () => {
             href="/tabs/Projects" 
             className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Projects') ? 'bg-[#77898D]' : ''}`}
           >
-            <Image src={icons.projects} alt="Projects icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Projects</span>
+            <Image src={icons.projects} alt="Projects icon" width={25} height={25} />
+            <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Projects</span>
           </Link>
           <Link 
             href="/tabs/Departments" 

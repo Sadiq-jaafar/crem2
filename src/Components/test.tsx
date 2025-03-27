@@ -1,105 +1,154 @@
-"use client"; // Correct: all lowercase
+// "use client";
+// import Link from "next/link";
+// import React from "react";
+// import { FaAngleRight, FaAngleLeft, FaPlus, FaChevronDown } from "react-icons/fa";
+// import Image from "next/image";
+// import { usePathname } from "next/navigation";
+// import images from "../../constants/images";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa"; // Example icons
-import images from '../../constants/images';
-import { primary } from '../../constants/colors';
-import icons from '../../constants/icons';
+// export const useHeaderState = () => {
+//   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
+//   const [selectedLogo, setSelectedLogo] = React.useState<number>(1);
 
-const SideBar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+//   // Function to toggle dropdown visibility
+//   const toggleDropdown = (): void => {
+//     setIsDropdownOpen(!isDropdownOpen);
+//   };
 
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
-  };
+//   // Function to select a logo
+//   const selectLogo = (logoNumber: number): void => {
+//     setSelectedLogo(logoNumber);
+//     setIsDropdownOpen(false);
+//   };
 
-  return (
-    <div
-      className={`relative h-screen p-4 transition-all duration-300 ease-in-out ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} fixed top-0 left-0 z-50 flex flex-col`}
-      style={{ backgroundColor: primary }}
-    >
-      {/* Logo Section */}
-      <div className="flex items-center justify-center mb-8">
-        <Image
-          src={images.logo}
-          alt="Logo"
-          width={isCollapsed ? 40 : 80} // Adjust logo size based on collapsed state
-          height={isCollapsed ? 40 : 80}
-          className="transition-all duration-300 ease-in-out"
-        />
-      </div>
+//   return { isDropdownOpen, selectedLogo, toggleDropdown, selectLogo };
+// };
 
-      <div className="flex flex-col flex-grow space-y-2 overflow-y-auto">
-        {/* Navigation Links */}
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.dashboard} alt="Dashboard icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Dashboard</span>
-        </Link>
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.projects} alt="Projects icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Projects</span>
-        </Link>
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.Departments} alt="Departments icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Departments</span>
-        </Link>
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.Property} alt="Property icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Property</span>
-        </Link>
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.Client} alt="Client icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Client</span>
-        </Link>
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.Meeting} alt="Meeting icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Meetings</span>
-        </Link>
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.Driver} alt="Driver icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Drivers</span>
-        </Link>
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.Finance} alt="Finance icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Finance</span>
-        </Link>
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.Parnership} alt="Partnership icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Partnership</span>
-        </Link>
-        <Link href="/" className="flex items-center text-gray-200 hover:bg-gray-700 rounded-md p-2">
-          <Image src={icons.Settings} alt="Settings icon" width={20} height={20} />
-          <span className={`ml-2 text-sm ${isCollapsed ? 'hidden' : 'block'}`}>Settings</span>
-        </Link>
-      </div>
+// const Header2: React.FC = () => {
+//   const pathname = usePathname();
+//   const { isDropdownOpen, selectedLogo, toggleDropdown, selectLogo } =
+//     useHeaderState();
 
-      {/* Profile Section */}
-      <div className="mt-auto flex items-center justify-center flex-col">
-        <Image
-          src={images.Profile}
-          alt="Profile icon"
-          width={isCollapsed ? 30 : 40}
-          height={isCollapsed ? 30 : 40}
-          className="rounded-full border-2 border-white"
-        />
-        <span className={`text-sm mt-2 ${isCollapsed ? 'hidden' : 'block'}`}>Profile</span>
-      </div>
+//   const isActive = (href: string): boolean => {
+//     return pathname === href;
+//   };
 
-      {/* Toggle Button */}
-      <button
-        onClick={toggleSidebar}
-        className={`absolute ${isCollapsed ? 'left-[43px]' : 'left-[93px]'} top-1/2 transform -translate-y-1/2 translate-x-1/2 bg-gray-800 border border-gray-600 text-white p-2 rounded-full shadow-lg hover:bg-gray-700 focus:outline-none transition-all duration-300 ease-in-out`}
-        style={{
-          borderColor: "#77898D",
-          backgroundColor: primary,
-        }}
-      >
-        {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
-      </button>
-    </div>
-  );
-};
+//   return (
+//     <header className="h-12 bg-gray-100 w-full flex items-center justify-between px-4 shadow-sm relative">
+//       {/* Left Navigation Section */}
+//       <div className="flex items-center space-x-4">
+//         {/* Navigation Toggle */}
+//         <div className="flex space-x-1">
+//           <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
+//             <FaAngleLeft className="text-sm" />
+//           </button>
+//           <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
+//             <FaAngleRight className="text-sm" />
+//           </button>
+//         </div>
 
-export default SideBar;
+//         {/* Navigation Links */}
+//         <nav className="flex items-center space-x-1">
+//           <Link
+//             href="/tabs/Projects"
+//             className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+//               isActive("/tabs/Projects") ? "bg-gray-400" : ""
+//             }`}
+//           >
+//             Project
+//           </Link>
+//           <Link
+//             href="/tabs/Property"
+//             className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+//               isActive("/tabs/Property") ? "bg-gray-400" : ""
+//             }`}
+//           >
+//             Property
+//           </Link>
+//           <Link
+//             href="/tabs/Clients"
+//             className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+//               isActive("/tabs/Clients") ? "bg-gray-400" : ""
+//             }`}
+//           >
+//             Clients
+//           </Link>
+//           <Link
+//             href="/tabs/Tenants"
+//             className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+//               isActive("/tabs/Tenants") ? "bg-gray-400" : ""
+//             }`}
+//           >
+//             Tenants
+//           </Link>
+//           <Link
+//             href="/tabs/Agents"
+//             className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+//               isActive("/tabs/Agents") ? "bg-gray-400" : ""
+//             }`}
+//           >
+//             Agents
+//           </Link>
+//           <Link
+//             href="/tabs/NewList"
+//             className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+//               isActive("/tabs/NewList") ? "bg-gray-400" : ""
+//             }`}
+//           >
+//             New List
+//           </Link>
+//           <Link
+//             href="/tabs/Add"
+//             className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md p-1 text-sm transition-colors ${
+//               isActive("/tabs/Add") ? "bg-gray-400" : ""
+//             }`}
+//           >
+//             <FaPlus />
+//           </Link>
+//         </nav>
+//       </div>
+
+//       {/* Logo Dropdown */}
+//       <div className="flex items-center relative">
+//         {/* Dropdown Toggle Button */}
+//         <button
+//           onClick={toggleDropdown}
+//           className="flex items-center text-gray-700 font-bold text-sm hover:bg-gray-400 rounded-md px-3 py-1 transition-colors"
+//           aria-expanded={isDropdownOpen}
+//           aria-haspopup="true"
+//         >
+//           <FaChevronDown className="ml-2 text-xs" />
+//         </button>
+
+//         {/* Dropdown Menu */}
+//         {isDropdownOpen && (
+//           <div className="absolute right-0 top-full mt-1 w-40 bg-white rounded-md shadow-lg z-10">
+//             <button
+//               onClick={() => selectLogo(1)}
+//               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-amber-100 flex items-center"
+//             >
+//               Logo 1
+//             </button>
+//             <button
+//               onClick={() => selectLogo(2)}
+//               className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-amber-100 flex items-center"
+//             >
+//               Logo 2
+//             </button>
+//           </div>
+//         )}
+
+//         {/* Display Selected Logo */}
+//         <div className="">
+//           {selectedLogo === 1 ? (
+//             <Image src={images.HeaderLogo1} alt="Logo 1" width={100} height={110} />
+//           ) : (
+//             <Image src={images.HeaderLogo2} alt="Logo 2" width={100} height={110} />
+//           )}
+//         </div>
+//       </div>
+//     </header>
+//   );
+// };
+
+// export default Header2;
