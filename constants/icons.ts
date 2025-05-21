@@ -8,6 +8,9 @@ import Parnership from "../assets/icons/Parnership.png";
 import projects from "../assets/icons/projects.png";
 import Property from "../assets/icons/Property.png";
 import Settings from "../assets/icons/Settings.png";
+import link from "../assets/icons/link.png";
+import company from "../assets/icons/company.png";
+import docs from "../assets/icons/docs.png";
 
 
 
@@ -21,7 +24,10 @@ const icons ={
     Parnership,
     projects,
     Property,
-    Settings
+    Settings,
+    link,
+    company,
+    docs,
 
 
 
