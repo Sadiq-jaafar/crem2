@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import Images from '../../../constants/images';
-import icons from '../../../constants/icons';
+import Images from '../../../../constants/images';
+import icons from '../../../../constants/icons';
 
 const SignUpCard: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -54,24 +54,27 @@ const SignUpCard: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white">
+      {/* Container for aligned logo and card */}
+      <div className="w-full max-w-[620px] px-4">
       {/* Logo and Title */}
-      <div className="flex items-center w-full max-w-3xl mb-2">
-        <Image src={Images.logo2} alt="CREMS Logo" width={40} height={40} className="mr-2" />
-        <span className="text-2xl font-semibold text-gray-700">CREMS</span>
+      <div className="flex items-start w-full h-[35px] max-w-3xl mb-2">
+        <Image src={Images.logo} alt="CREMS Logo" width={40} height={40} className="" />
+        <span className="text-lg font-semibold text-gray-700">CREMS</span>
       </div>
       {/* Card */}
       <div
-        className="bg-gray-100 shadow flex-col relative overflow-hidden"
+        className=" shadow flex-col relative overflow-hidden"
         style={{
           width: 620,
           height: 407,
           borderRadius: 20,
           maxWidth: 620,
+         background: "#E3E6E5" ,
         }}
       >
         {/* Card content */}
         <div
-          className="flex bg-gray-100 mx-auto"
+          className="flex mx-auto"
           style={{
             width: 553,
             height: 327,
@@ -81,7 +84,7 @@ const SignUpCard: React.FC = () => {
           }}
         >
           {/* Left Panel */}
-          <div className="flex items-center justify-center w-1/2 bg-gray-100 p-4">
+          <div className="flex items-center justify-center w-1/2 p-4">
             <Image
               src={Images.signin}
               alt="signin image"
@@ -465,6 +468,7 @@ const SignUpCard: React.FC = () => {
           </div>
         </div>
       </div>
+     </div>
     </div>
   );
 };
