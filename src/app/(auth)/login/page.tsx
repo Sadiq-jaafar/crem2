@@ -19,7 +19,7 @@ export default function LoginPage() {
             height={40} 
             className="" 
           />
-          <span className="text-2xl font-semibold text-gray-700">CREMS</span>
+          <span className="text-lg font-semibold text-gray-700">CREMS</span>
         </div>
 
         {/* Card Container */}
