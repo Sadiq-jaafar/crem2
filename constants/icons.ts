@@ -11,6 +11,8 @@ import Settings from "../assets/icons/Settings.png";
 import link from "../assets/icons/link.png";
 import company from "../assets/icons/company.png";
 import docs from "../assets/icons/docs.png";
+import memo from "../assets/icons/memo.png";
+import Tenant from "../assets/icons/Tenant.png";
 
 
 
@@ -28,6 +30,8 @@ const icons ={
     link,
     company,
     docs,
+    memo,
+    Tenant,
 
 
 

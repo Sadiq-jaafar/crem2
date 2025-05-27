@@ -81,10 +81,10 @@ const MemoDocument = ({ settings = { font: 'inter', fontWeight: 'normal', fontSi
   return (
     <>
       <div className="bg-white p-6 shadow-sm border border-gray-200 rounded-sm min-h-[calc(100vh-8rem)]" style={documentStyle}>
-        <div className="flex flex-col items-center mb-4">
+        <div className="flex flex-col justify-center items-center mb-4 gap-[7px]" >
           <MemoLogo />
-          <div className="text-gray-500 text-sm mt-2">REAL ESTATE & CONSTRUCTION</div>
-          <h1 className="text-lg font-semibold mt-4">INTERNAL MEMO</h1>
+          <div className="text-gray-500  text-[12px] mt-2">REAL ESTATE & CONSTRUCTION</div>
+          <h1 className="text-[16px] font-semibold mt-4 ">INTERNAL MEMO</h1>
         </div>
 
         <div className="flex justify-end mb-6">
