@@ -24,6 +24,10 @@ const SignUpCard: React.FC = () => {
 
   const TOTAL_STEPS = 8;
 
+  // Add these state declarations at the top of your component
+  const [step6Selections, setStep6Selections] = useState<number[]>([]);
+  const [step7Selections, setStep7Selections] = useState<number[]>([]);
+
   // Handlers (same as before)
   const handleSignUp = (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,7 +53,7 @@ const SignUpCard: React.FC = () => {
   // };
   const handleFinalSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setStep(7);
+    setStep(8);
   };
 
   return (
@@ -59,13 +63,13 @@ const SignUpCard: React.FC = () => {
       {/* Logo and Title */}
       <div className="flex items-center gap-1 w-full mb-2">
                 <Image 
-                  src={Images.logo} 
+                  src={icons.logo} 
                   alt="CREMS Logo" 
-                  width={28} 
-                  height={30} 
+                  width={23} 
+                  height={25} 
                   className="" 
                 />
-                <span className="text-[30px] mr-0.5 font-semibold text-gray-700">CREMS</span>
+                <span className="text-[20px] mr-0.5 font-semibold text-gray-700">CREMS</span>
               </div>
       {/* Card */}
       <div
@@ -283,7 +287,7 @@ const SignUpCard: React.FC = () => {
                     <button
                       key={index}
                       onClick={() => setStep(4)}
-                      className="border w-[57px] h-[51px] border-gray-700 rounded-lg py-2 px-1 flex flex-col items-center justify-center hover:bg-gray-600 transition"
+                      className="border w-[57px] h-[51px] border-gray-700 rounded-lg py-2 px-1 flex flex-col items-center justify-center hover:bg-gray-400 transition"
                     >
                       <div className="w-[20px] h-[20px] flex items-center justify-center mb-1 text-[20px] leading-none">
                         {item.icon}
@@ -362,8 +366,8 @@ const SignUpCard: React.FC = () => {
                 <div className='text-[10px] mb-4 align-left'>Please choose one or more</div>
                 <div className="grid grid-cols-4 gap-1 w-full max-w-md">
                   {[
-                    { label: 'Construction management', no: '', icon: '🚀' },
-                    { label: 'Property Managment', no: '11-50 people', icon: <Image src={icons.Stp} alt="Startup icon" width={20} height={17} /> },
+                    { label: 'Construction management', icon: '🚀' },
+                    { label: 'Property Managment', icon: <Image src={icons.Stp} alt="Startup icon" width={20} height={17} /> },
                     { label: 'Estate Management', icon: <Image src={icons.Enterprise} alt="hor icon" width={20} height={20} /> },
                     { label: 'Enterprise Management', icon: <Image src={icons.Non} alt="Non profit icon" width={15} height={15} /> },
                     { label: 'Others', icon: <Image src={icons.Others} alt="Others icon" width={19.17} height={11.24} /> },
@@ -371,15 +375,15 @@ const SignUpCard: React.FC = () => {
                     <button
                       key={index}
                       onClick={() => setStep(6)}
-                      className="border w-[57px] h-[51px] border-gray-700 rounded-lg py-2 px-1 flex flex-col items-center justify-center hover:bg-gray-600 transition"
+                      className="border w-[57px] h-[51px] border-gray-700 rounded-lg py-2 px-1 flex flex-col items-center justify-center hover:bg-gray-400 transition"
                     >
                       <div className="w-[20px] h-[20px] flex items-center justify-center mb-1 text-[20px] leading-none">
                         {item.icon}
                       </div>
                       <div className="text-center text-[6px] leading-tight">{item.label}</div>
-                      {item.no && (
+                      {/* {item.no && (
                         <div className="text-center text-[6px] leading-tight">{item.no}</div>
-                      )}
+                      )} */}
                     </button>
                   ))}
                 </div>
@@ -391,43 +395,50 @@ const SignUpCard: React.FC = () => {
                 <h2 className="text-[14px] font-bold mb-2 mt-[-30px]">How did you know about us?</h2>
                 <div className='text-[10px] mb-4 align-left'>Please choose one or more</div>
                 <div className="grid grid-cols-4 gap-1 w-full max-w-md">
-                    {[
+                  {[
                     { label: 'Business Partners', icon: "🚀" },
                     { label: 'Friends and Collegues', icon: <Image src={icons.Stp} alt="Startup icon" width={20} height={17} /> },
-                    { label: 'Social Media', icon:  <Image src={icons.Enterprise} alt="hor icon" width={20} height={20} />  },
-                    { label: 'Blog or Publication', icon:  <Image src={icons.Horse} alt="Non profit icon" width={15} height={15} /> },
-                    { label: 'Startup',  icon: <Image src={icons.Non} alt="Non profit icon" width={15} height={15} /> },
-                    { label: 'Non profit', icon:  <Image src={icons.Others} alt="Non profit icon" width={15} height={15} /> },
-                   
-                    ].map((item, index) => (
+                    { label: 'Social Media', icon: <Image src={icons.Enterprise} alt="hor icon" width={20} height={20} /> },
+                    { label: 'Blog or Publication', icon: <Image src={icons.Horse} alt="Non profit icon" width={15} height={15} /> },
+                    { label: 'Startup', icon: <Image src={icons.Non} alt="Non profit icon" width={15} height={15} /> },
+                    { label: 'Non profit', icon: <Image src={icons.Others} alt="Non profit icon" width={15} height={15} /> },
+                  ].map((item, index) => (
                     <button
                       key={index}
-                      onClick={() => setStep(7)}
-                      className="border w-[57px] h-[51px] border-gray-700 rounded-lg py-2 px-1 flex flex-col items-center justify-center hover:bg-gray-600 transition"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStep6Selections(prev => 
+                          prev.includes(index) 
+                            ? prev.filter(i => i !== index)
+                            : [...prev, index]
+                        );
+                      }}
+                      className={`border w-[57px] h-[51px] border-gray-700 rounded-lg py-2 px-1 flex flex-col items-center justify-center hover:bg-gray-400 transition ${
+                        step6Selections.includes(index) ? 'bg-gray-400' : ''
+                      }`}
                     >
                       <div className="w-[20px] h-[20px] flex items-center justify-center mb-1 text-[20px] leading-none">
-                      {typeof item.icon === 'string' ? item.icon : item.icon}
+                        {typeof item.icon === 'string' ? item.icon : item.icon}
                       </div>
                       <div className="text-center text-[6px] leading-tight">{item.label}</div>
                     </button>
-                    ))}
+                  ))}
                 </div>
-               <div className="flex flex-end items-right  justify-end mt-4">
-
-                     <button 
-                     onClick={() => setStep(7)}
-                     type='submit'
-                   className="absolute h-[31px] right-2 bottom-2 bg-gray-700 text-white px-4 py-1 rounded hover:bg-gray-800 text-xs"
-                     style={{ width: 80 }}
+                <div className="flex flex-end items-right justify-end mt-4">
+                  <button 
+                    onClick={() => step6Selections.length > 0 && setStep(7)}
+                    type='button'
+                    className="absolute h-[31px] right-2 bottom-2 bg-gray-700 text-white px-4 py-1 rounded hover:bg-gray-800 text-xs"
+                    style={{ width: 80 }}
                   >
                     Next
                   </button>
-                  </div>
+                </div>
               </div>
-            ) : step === 7? (
+            ) : step === 7 ? (
               <div className="flex flex-col w-full">
                 <h2 className="text-[13px] font-bold mt-4">What crems application will you be using?</h2>
-                <div className='text-[10px]  align-left'>Please choose one or more</div>
+                <div className='text-[10px] align-left'>Please choose one or more</div>
                 <div className="grid grid-cols-4 font-bold gap-1 w-full max-w-md">
                     {[
                     { label: 'Memo', icon: 
@@ -460,11 +471,20 @@ const SignUpCard: React.FC = () => {
                     ].map((item, index) => (
                     <button
                       key={index}
-                      onClick={() => setStep(8)}
-                      className="border w-[52px] h-[48px] border-gray-700 rounded-lg py-2 px-1 flex flex-col items-center justify-center hover:bg-gray-600 transition"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStep7Selections(prev => 
+                          prev.includes(index) 
+                            ? prev.filter(i => i !== index)
+                            : [...prev, index]
+                        );
+                      }}
+                      className={`border w-[52px] h-[48px] border-gray-700 rounded-lg py-2 px-1 flex flex-col items-center justify-center hover:bg-gray-400 transition ${
+                        step7Selections.includes(index) ? 'bg-gray-400' : ''
+                      }`}
                     >
                       <div className="w-[10px] h-[10px] flex items-center justify-center mb-1 text-[20px] leading-none">
-                      {typeof item.icon === 'string' ? item.icon : item.icon}
+                        {typeof item.icon === 'string' ? item.icon : item.icon}
                       </div>
                       <div className="text-center text-[10px] leading-tight">{item.label}</div>
                     </button>
@@ -473,10 +493,9 @@ const SignUpCard: React.FC = () => {
                <div className="flex flex-end items-right  justify-end mt-4">
 
                      <button 
-                     onClick={handleFinalSubmit}
-                    type="submit"
-                    
-                   className=" absolute mt-[-6px] h-[31px] right-2  bg-gray-700 text-white px-4 py-1 rounded hover:bg-gray-800 text-xs"
+                     onClick={() => step7Selections.length > 0 && setStep(8)}
+                     type='button'
+                   className="absolute mt-[-6px] h-[31px] right-2 bg-gray-700 text-white px-4 py-1 rounded hover:bg-gray-800 text-xs"
                      style={{ width: 80 }}
                   >
                     Next
@@ -501,7 +520,10 @@ const SignUpCard: React.FC = () => {
 
                 <button
                   className="inline-block bg-gray-700 text-white px-6 py-2 rounded hover:bg-gray-800"
-                  onClick={() => router.push("/login")}
+                  onClick={(e) => {
+                    handleFinalSubmit(e);
+                    router.push("/login");
+                  }}
                 >
                   Finish
                 </button>

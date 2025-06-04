@@ -33,6 +33,7 @@ import Evnt from "../assets/icons/evnt.png";
 import Ms2 from "../assets/icons/ms2.png";
 import Report from "../assets/icons/report.png";
 import Prop2 from "../assets/icons/prop2.png";
+import logo from "../assets/icons/logo.png";
 
 
 const icons ={
@@ -71,6 +72,7 @@ const icons ={
     Ms2,
     Report,
     Prop2,
+    logo
 
 
 

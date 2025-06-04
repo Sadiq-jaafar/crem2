@@ -1,12 +1,47 @@
-
-
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import images from "../../../../constants/images";
 import icons from "../../../../constants/icons";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
+    router.push('/'); // Redirect to home page immediately for now
+
+  //   try {
+  //     // Replace this with your actual login API call
+  //     const response = await fetch('/api/login', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ email, password }),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error('Login failed');
+  //     }
+
+  //     // If login successful, redirect to home page
+  //     router.push('/');
+  //   } catch (err) {
+  //     setError("Invalid email or password");
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
+  }
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white">
       {/* Container for aligned logo and card */}
@@ -14,13 +49,13 @@ export default function LoginPage() {
         {/* Logo and Title */}
         <div className="flex items-center gap-1 w-full mb-2">
           <Image 
-            src={images.logo} 
+            src={icons.logo} 
             alt="CREMS Logo" 
-            width={28} 
-            height={30} 
+            width={23} 
+            height={25} 
             className="" 
           />
-          <span className="text-[30px] mr-0.5 font-semibold text-gray-700">CREMS</span>
+          <span className="text-[20px] mr-0.5 font-semibold text-gray-700">CREMS</span>
         </div>
 
         {/* Card Container */}
@@ -101,36 +136,45 @@ export default function LoginPage() {
                 <div className="flex-1 h-px bg-gray-700" />
               </div>
 
-              <form className="space-y-2 mb-1">
+              <form onSubmit={handleLogin} className="space-y-2 mb-1">
                 <div className="relative mb-3 items-center">
-                  <span className="  absolute left-2 top-1/2 transform -translate-y-1/2">
+                  <span className="absolute left-2 top-1/2 transform -translate-y-1/2">
                     <Image src={icons.PlEmail} alt="pwd" width={16} height={16} />
                   </span>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  className="w-full h-[31px] text-xs pl-8 p-1 border border-gray-300 rounded bg-gray-200 placeholder-gray-500"
-                  required
-                />
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full h-[31px] text-xs pl-8 p-1 border border-gray-300 rounded bg-gray-200 placeholder-gray-500"
+                    required
+                  />
                 </div>
 
                 <div className="relative mb-3 items-center">
-                  <span className="  absolute left-2 top-1/2 transform -translate-y-1/2">
+                  <span className="absolute left-2 top-1/2 transform -translate-y-1/2">
                     <Image src={icons.PlPwd} alt="pwd" width={16} height={16} />
                   </span>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="w-full h-[31px] text-xs pl-8 p-1 border border-gray-300 rounded bg-gray-200 placeholder-gray-500"
-                  required
-                />
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="w-full h-[31px] text-xs pl-8 p-1 border border-gray-300 rounded bg-gray-200 placeholder-gray-500"
+                    required
+                  />
                 </div>
+
+                {error && (
+                  <div className="text-red-500 text-xs mb-2">{error}</div>
+                )}
                 
                 <button
                   type="submit"
-                  className="w-full h-[31px] text-xs bg-gray-600 text-white p-1 rounded hover:bg-gray-700"
+                  disabled={isLoading}
+                  className="w-full h-[31px] text-xs bg-gray-600 text-white p-1 rounded hover:bg-gray-700 disabled:opacity-50"
                 >
-                  Sign in
+                  {isLoading ? "Signing in..." : "Sign in"}
                 </button>
               </form>
 
