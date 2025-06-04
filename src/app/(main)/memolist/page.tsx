@@ -7,6 +7,8 @@ import { Input } from '@/Components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/Components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/Components/ui/table';
 import EditHeaderDialog from '@/Components/EditHeaderDialog';
+import Image from 'next/image';
+import icons from '../../../../constants/icons';
 
 interface Memo {
   id: string;
@@ -139,20 +141,20 @@ const MemoList = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex">
       {/* Fixed Sidebar */}
-      <div className="w-64 bg-white border-r border-gray-200 p-4 fixed h-full overflow-y-auto">
+      <div className="w-[146px] flex flex-col items-center bg-gray-300 border-r border-gray-400 pt-4 fixed h-full overflow-y-auto">
         <Button 
           onClick={handleNewMemo}
-          className="w-full mb-6 bg-teal-700 hover:bg-teal-800 text-white"
+          className="w-[75px] h-[39px] justify-center mb-6 bg-teal-700 hover:bg-teal-800 text-white"
         >
           New
         </Button>
         
-        <div className="space-y-1">
+        <div className="space-y-1 w-full px-2">
           {sidebarItems.map((item, index) => (
             <div
               key={index}
               className={`flex justify-between items-center px-3 py-2 rounded text-sm cursor-pointer ${
-                item.active ? 'bg-gray-100' : 'hover:bg-gray-50'
+                item.active ? 'bg-gray-400' : 'hover:bg-gray-400'
               }`}
             >
               <span className={item.active ? 'font-medium' : ''}>{item.label}</span>
@@ -163,9 +165,9 @@ const MemoList = () => {
       </div>
 
       {/* Main Content - with left margin to account for fixed sidebar */}
-      <div className="flex-1 p-6 ml-64">
+      <div className="flex-1 p-6 ml-[121px] bg-gray-300 overflow-hidden"> {/* Added overflow-hidden */}
         {/* Header with Search */}
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-center bg-gray-300 gap-4 ml-4 mb-6">
           <div className="flex items-center gap-2">
             <div className="w-5 h-5 border border-gray-300"></div>
             <Select defaultValue="all">
@@ -196,45 +198,45 @@ const MemoList = () => {
         </div>
 
         {/* Table */}
-        <div className="bg-white rounded-lg border border-gray-200">
+        <div className="bg-gray-400 rounded-lg border border-gray-300 flex flex-col h-[calc(100vh-180px)]"> {/* Added flex, flex-col and height calculation */}
           <Table>
-            <TableHeader>
-              <TableRow className="border-b border-gray-200">
-                <TableHead className="w-12">
-                  <div className="w-4 h-4 border border-gray-300"></div>
+            <TableHeader className="sticky top-0 z-10 bg-gray-300">
+              <TableRow className="border-b border-gray-400 flex w-full">
+                <TableHead className="w-12 flex-none">
+                  <div className="w-4 h-4 border border-gray-400"></div>
                 </TableHead>
-                <TableHead className="font-medium">Type</TableHead>
-                <TableHead className="font-medium">Ref. no.</TableHead>
-                <TableHead className="font-medium">To</TableHead>
-                <TableHead className="font-medium">Subject</TableHead>
-                <TableHead className="font-medium">Date</TableHead>
-                <TableHead className="font-medium">Amount</TableHead>
-                <TableHead className="font-medium">Status</TableHead>
+                <TableHead className="font-medium w-20 flex-none">Type</TableHead>
+                <TableHead className="font-medium w-32 flex-none">Ref. no.</TableHead>
+                <TableHead className="font-medium w-40 flex-none">To</TableHead>
+                <TableHead className="font-medium flex-1">Subject</TableHead>
+                <TableHead className="font-medium w-24 flex-none">Date</TableHead>
+                <TableHead className="font-medium w-28 flex-none">Amount</TableHead>
+                <TableHead className="font-medium w-24 flex-none">Status</TableHead>
               </TableRow>
             </TableHeader>
-            <TableBody>
+            <TableBody className="block space-y-1 overflow-y-auto overflow-x-hidden">
               {memos.map((memo) => (
                 <TableRow 
                   key={memo.id} 
-                  className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
+                  className="h-[35px] min-h-[35px] max-h-[35px] bg-gray-300 border border-gray-400 text-[12px] hover:bg-gray-400 cursor-pointer flex w-full items-center"
                   onClick={() => handleMemoClick(memo.id)}
                 >
-                  <TableCell>
+                  <TableCell className="w-12 flex-none">
                     <div className="w-4 h-4 border border-gray-300"></div>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="w-20 flex-none">
                     {memo.type === 'up' ? (
-                      <ArrowUp className="h-4 w-4 text-gray-600" />
+                      <Image src={icons.outgoing} width={16} height={16} alt="Outgoing" />
                     ) : (
-                      <ArrowDown className="h-4 w-4 text-green-600" />
+                      <Image src={icons.incoming} width={16} height={16} alt="incoming" />
                     )}
                   </TableCell>
-                  <TableCell className="text-sm">{memo.refNo}</TableCell>
-                  <TableCell className="text-sm">{memo.to}</TableCell>
-                  <TableCell className="text-sm">{memo.subject}</TableCell>
-                  <TableCell className="text-sm">{memo.date}</TableCell>
-                  <TableCell className="text-sm">{memo.amount}</TableCell>
-                  <TableCell>
+                  <TableCell className="text-sm w-32 flex-none">{memo.refNo}</TableCell>
+                  <TableCell className="text-sm w-40 flex-none">{memo.to}</TableCell>
+                  <TableCell className="text-sm flex-1">{memo.subject}</TableCell>
+                  <TableCell className="text-sm w-24 flex-none">{memo.date}</TableCell>
+                  <TableCell className="text-sm w-28 flex-none">{memo.amount}</TableCell>
+                  <TableCell className="w-24 flex-none">
                     <span className="text-sm text-green-600 font-medium">{memo.status}</span>
                   </TableCell>
                 </TableRow>

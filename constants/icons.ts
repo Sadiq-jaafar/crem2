@@ -34,6 +34,8 @@ import Ms2 from "../assets/icons/ms2.png";
 import Report from "../assets/icons/report.png";
 import Prop2 from "../assets/icons/prop2.png";
 import logo from "../assets/icons/logo.png";
+import outgoing from "../assets/icons/outgoing.png";
+import incoming from "../assets/icons/incoming.png";
 
 
 const icons ={
@@ -72,7 +74,9 @@ const icons ={
     Ms2,
     Report,
     Prop2,
-    logo
+    logo,
+    outgoing,
+    incoming,
 
 
 
