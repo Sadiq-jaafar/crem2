@@ -25,6 +25,7 @@ interface Memo {
 const MemoList = () => {
   const navigate = useRouter();
   const [showHeaderDialog, setShowHeaderDialog] = useState(false);
+  const [checkedRows, setCheckedRows] = useState<Set<string>>(new Set());
 
   const memos: Memo[] = [
     {
@@ -139,6 +140,19 @@ const MemoList = () => {
     setShowHeaderDialog(false);
   };
 
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>, memoId: string) => {
+    e.stopPropagation();
+    setCheckedRows(prev => {
+      const newChecked = new Set(prev);
+      if (e.target.checked) {
+        newChecked.add(memoId);
+      } else {
+        newChecked.delete(memoId);
+      }
+      return newChecked;
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 flex">
       {/* Fixed Sidebar */}
@@ -233,17 +247,18 @@ const MemoList = () => {
               {memos.map((memo) => (
                 <TableRow 
                   key={memo.id} 
-                  className="h-[35px] min-h-[35px] max-h-[35px] bg-gray-100 border-b-0 text-[10px] hover:bg-gray-300 cursor-pointer flex w-full items-center"
+                  className={`h-[35px] min-h-[35px] max-h-[35px] bg-gray-100 border-b-0 text-[10px] hover:bg-gray-300 cursor-pointer flex w-full items-center ${
+                    checkedRows.has(memo.id) ? 'bg-gray-300' : ''
+                  }`}
                   onClick={() => handleMemoClick(memo.id)}
                 >
                   <TableCell className="w-8 flex-none pl-2">
                     <input
                       type="checkbox"
+                      checked={checkedRows.has(memo.id)}
                       className="w-4 h-4 border border-gray-600 rounded cursor-pointer accent-teal-700"
                       onClick={(e) => e.stopPropagation()}
-                      onChange={(e) => {
-                        console.log('Checkbox clicked:', e.target.checked);
-                      }}
+                      onChange={(e) => handleCheckboxChange(e, memo.id)}
                     />
                   </TableCell>
                   <TableCell className="w-12 flex-none">
