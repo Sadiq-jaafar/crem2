@@ -10,6 +10,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import EditHeaderDialog from '@/Components/EditHeaderDialog';
 import Image from 'next/image';
 import icons from '../../../../../constants/icons';
+import Header3 from '@/Components/Header3';
+import Header from '@/Components/Header';
 
 interface Memo {
   id: string;
@@ -107,6 +109,96 @@ const MemoList = () => {
       date: '14/05/2025',
       amount: '3,000,000.00',
       status: 'Paid'
+    },
+    {
+      id: '9',
+      type: 'down',
+      refNo: 'RHL/ADM/05/05',
+      to: 'Managing director',
+      subject: 'Purchase of electrical appliances at FVE......',
+      date: '14/05/2025',
+      amount: '3,000,000.00',
+      status: 'Paid'
+    },
+    {
+      id: '10',
+      type: 'down',
+      refNo: 'RHL/ADM/05/05',
+      to: 'Managing director',
+      subject: 'Purchase of electrical appliances at FVE......',
+      date: '14/05/2025',
+      amount: '3,000,000.00',
+      status: 'Paid'
+    },
+    {
+      id: '11',
+      type: 'down',
+      refNo: 'RHL/ADM/05/05',
+      to: 'Managing director',
+      subject: 'Purchase of electrical appliances at FVE......',
+      date: '14/05/2025',
+      amount: '3,000,000.00',
+      status: 'Paid'
+    },
+    {
+      id: '12',
+      type: 'down',
+      refNo: 'RHL/ADM/05/05',
+      to: 'Managing director',
+      subject: 'Purchase of electrical appliances at FVE......',
+      date: '14/05/2025',
+      amount: '3,000,000.00',
+      status: 'Paid'
+    },
+    {
+      id: '13',
+      type: 'down',
+      refNo: 'RHL/ADM/05/05',
+      to: 'Managing director',
+      subject: 'Purchase of electrical appliances at FVE......',
+      date: '14/05/2025',
+      amount: '3,000,000.00',
+      status: 'Paid'
+    },
+    {
+      id: '14',
+      type: 'down',
+      refNo: 'RHL/ADM/05/05',
+      to: 'Managing director',
+      subject: 'Purchase of electrical appliances at FVE......',
+      date: '14/05/2025',
+      amount: '3,000,000.00',
+      status: 'Paid'
+    },
+    {
+      id: '15',
+      type: 'down',
+      refNo: 'RHL/ADM/05/05',
+      to: 'Managing director',
+      subject: 'Purchase of electrical appliances at FVE......',
+      date: '14/05/2025',
+      amount: '3,000,000.00',
+      status: 'Paid'
+    },
+    {
+      id: '16',
+      type: 'down',
+      refNo: 'RHL/ADM/05/05',
+      to: 'Managing director',
+      subject: 'Purchase of electrical appliances at FVE......',
+      date: '14/05/2025',
+      amount: '3,000,000.00',
+      status: 'Paid'
+    },
+    {
+      id: '17',
+      type: 'down',
+      refNo: 'RHL/ADM/05/05',
+      to: 'Managing director',
+      subject: 'Purchase of electrical appliances at FVE......',
+      date: '14/05/2025',
+      amount: '3,000,000.00',
+      status: 'Paid'
     }
   ];
 
@@ -154,9 +246,10 @@ const MemoList = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
+    <div className="h-screen relative flex flex-col  bg-gray-100"> {/* Added pt-12 for header space */}
+      <Header3 />
       {/* Fixed Sidebar */}
-      <div className="w-[146px] flex flex-col items-center bg-gray-100 border-r-2 border-gray-200 pt-4 fixed h-full overflow-y-auto">
+      <div className="w-[146px] flex flex-col items-center bg-gray-100 border-r-2 border-gray-200 pt-15 fixed h-full overflow-y-auto no-scrollbar">
         <Button 
           onClick={handleNewMemo}
           className="w-[75px] h-[39px] justify-center mb-6 bg-teal-700 hover:bg-teal-800 text-white"
@@ -179,14 +272,14 @@ const MemoList = () => {
         </div>
       </div>
 
-      {/* Main Content - with left margin to account for fixed sidebar */}
-      <div className="flex-1 p-6 ml-[121px] bg-gray-100 overflow-hidden"> {/* Added overflow-hidden */}
+      {/* Main Content */}
+      <div className="flex-1 p-6 ml-[121px] bg-gray-100 overflow-hidden flex flex-col"> {/* Added flex flex-col */}
         {/* Header with Search */}
         <div className="flex items-center h-8 ml-4 justify-between bg-gray-100 mb-4"> {/* Added h-8 */}
           {/* Left section */}
           <div className="flex items-center gap-2"> {/* Added gap-2 for consistent spacing */}
             <Select defaultValue="all">
-              <SelectTrigger className="h-8 w-15 bg-gray-100 border-none">
+              <SelectTrigger className="h-8 w-15 bg-gray-100 hover:bg-gray-200 border-none">
                 <SelectValue placeholder={<div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded cursor-pointer accent-teal-700"></div>} />
               </SelectTrigger>
               <SelectContent>
@@ -196,7 +289,7 @@ const MemoList = () => {
               </SelectContent>
             </Select>
             
-            <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Button variant="ghost" size="icon" className="hover:bg-gray-200 h-8 w-8">
               <IoIosRefresh className="h-4 w-4" />
             </Button>
 
@@ -228,10 +321,19 @@ const MemoList = () => {
         </div>
 
         {/* Table */}
-        <div className="bg-gray-200 ml-2  rounded-lg flex flex-col h-[calc(100vh-180px)]">
-          <Table className="h-full border-b-0">
+        <div className="bg-gray-200 ml-2 rounded-lg flex flex-col h-[calc(100vh-100px)] overflow-hidden scrollbar-none scrollbar-hide no-scrollbar"
+         >
+          <Table className="h-full scrollbar-hide scrollbar-none overflow-hidden no-scrollbar border-b-0"
+          style={{ 
+            
+            scrollbarWidth: 'none',  // Firefox
+            scrollPaddingRight:"none",
+            msOverflowStyle: 'none' , // IE and Edge
+            overflow:"hidden"
+          }}>
             <TableHeader className="sticky top-0 z-10 bg-gray-100">
-              <TableRow className="flex w-full border-none">
+              <TableRow className="flex w-full border-none"
+              >
                 <TableHead className="w-8 flex-none border-b-0">
                 </TableHead>
                 <TableHead className="font-medium w-12 flex-none">Type</TableHead>
@@ -243,7 +345,7 @@ const MemoList = () => {
                 <TableHead className="font-medium w-24 flex-none">Status</TableHead>
               </TableRow>
             </TableHeader>
-            <TableBody className="block space-y-1 border-t-0 overflow-y-auto text-[10px] overflow-x-hidden border-b-0 scrollbar-none">
+            <TableBody className="block space-y-1 flex-1 border-t-0 overflow-y-auto overflow-x-hidden border-b-0 scrollbar-none">
               {memos.map((memo) => (
                 <TableRow 
                   key={memo.id} 

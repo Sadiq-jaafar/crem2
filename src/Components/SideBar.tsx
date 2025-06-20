@@ -28,88 +28,112 @@ const SideBar: React.FC = () => {
     >
       {/* Logo Section */}
       <div className="justify-between flex flex-col">
-        <div className="flex items-center justify-center mb-8">
+        <div className="flex items-center justify-center">
           <Image
             src={images.logo}
             alt="Logo"
-            width={isCollapsed ? 40 : 80}
-            height={isCollapsed ? 40 : 80}
-            className="transition-all duration-300 ease-in-out"
+            width='43'
+            height="48"
+            className="transition-all duration-300 mb-[25px] ease-in-out"
           />
         </div>
 
         {/* Navigation Links */}
-        <div className="flex flex-col p-2 space-y-2">
+        <div className="flex flex-col  left-0 space-y-2">
+
+          <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between' : 'w-[120px]'} h-[32px] m-0 pl-[3px] py-[3px] fixed  left-0 items-center justify-center ${isActive('/') ? 'bg-[#77898D]' : ''}`}>
+
           <Link 
             href="/" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/') ? 'bg-[#77898D]' : ''}`}
+            className={`flex items-center  text-gray-200 hover:bg-[#77898D]  p-1 ${isActive('/') ? 'bg-[#77898D]' : ''}`}
           >
             <Image src={icons.dashboard} alt="Dashboard icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Dashboard</span>
+            <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Dashboard</span>
           </Link>
+          </div>
+
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} fixed mt-9 py-[3px] pl-2 h-[32px] left-0 items-center justify-center ${isActive('/tabs/Projects') ? 'bg-[#77898D]' : ''}`}>
+
           <Link 
             href="/tabs/Projects" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Projects') ? 'bg-[#77898D]' : ''}`}
+            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Projects') ? 'bg-[#77898D]' : ''}`}
           >
-            <Image src={icons.projects} alt="Projects icon" width={25} height={25} />
+            <Image src={icons.projects} alt="Projects icon" width={20} height={20} />
             <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Projects</span>
           </Link>
+           </div>
+
+            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-18 pl-2 py-[3px] fixed h-[32px]  left-0 items-center justify-center`}>
+
           <Link 
             href="/tabs/Departments" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Departments') ? 'bg-[#77898D]' : ''}`}
+            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Departments') ? 'bg-[#77898D]' : ''}`}
           >
             <Image src={icons.Departments} alt="Departments icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Departments</span>
+            <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Departments</span>
           </Link>
+            </div>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-27 pl-2 py-[3px] fixed h-[32px] left-0 items-center justify-center ${isActive('/tabs/Property') ? 'bg-[#77898D]' : ''}`}>
+
           <Link 
             href="/tabs/Property" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Property') ? 'bg-[#77898D]' : ''}`}
+            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Property') ? 'bg-[#77898D]' : ''}`}
           >
             <Image src={icons.Property} alt="Property icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Property</span>
+            <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Properties</span>
           </Link>
+           </div>
+            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-36 pl-2 py-[4px] h-[32px] fixed  left-0 items-center justify-center ${isActive('/tabs/Clients') ? 'bg-[#77898D]' : ''}`}>
+
           <Link 
             href="/tabs/Clients" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Clients') ? 'bg-[#77898D]' : ''}`}
+            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Clients') ? 'bg-[#77898D]' : ''}`}
           >
-            <Image src={icons.Client} alt="Client icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Client</span>
+            <Image src={icons.Client} alt="Client icon" width={24} height={27} />
+            <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Clients</span>
           </Link>
+            </div>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-45 pl-2 py-[3px] h-[32px] fixed left-0 items-center justify-center ${isActive('/tabs/Meetings') ? 'bg-[#77898D]' : ''}`}>
+
           <Link 
             href="/tabs/Meetings" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Meetings') ? 'bg-[#77898D]' : ''}`}
+            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Meetings') ? 'bg-[#77898D]' : ''}`}
           >
             <Image src={icons.Meeting} alt="Meeting icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Meetings</span>
+            <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Events</span>
           </Link>
+           </div>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-54 py-[3px] pl-2 h-[32px] fixed left-0 items-center justify-center  ${isActive('/tabs/Drivers') ? 'bg-[#77898D]' : ''}`}>
+
           <Link 
             href="/tabs/Drivers" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Drivers') ? 'bg-[#77898D]' : ''}`}
+            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Drivers') ? 'bg-[#77898D]' : ''}`}
           >
             <Image src={icons.Driver} alt="Driver icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Drivers</span>
+            <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Drivers</span>
           </Link>
+           </div>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-63 pl-2 py-[3px] h-[32px] fixed left-0 items-center justify-center ${isActive('/tabs/Finance') ? 'bg-[#77898D]' : ''}`}>
+
           <Link 
             href="/tabs/Finance" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Finance') ? 'bg-[#77898D]' : ''}`}
+            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Finance') ? 'bg-[#77898D]' : ''}`}
           >
             <Image src={icons.Finance} alt="Finance icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Finance</span>
+            <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Finance</span>
           </Link>
-          <Link 
-            href="/tabs/Partnership" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Partnership') ? 'bg-[#77898D]' : ''}`}
-          >
-            <Image src={icons.Parnership} alt="Partnership icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Partnership</span>
-          </Link>
+           </div>
+           
+            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-72 py-[3px] pl-2 fixed h-[32px] left-0 items-center justify-center ${isActive('/tabs/Settings') ? 'bg-[#77898D]' : ''}`}>
+
           <Link 
             href="/tabs/Settings" 
-            className={`flex items-center text-gray-200 hover:bg-gray-700 rounded-md pt-1 ${isActive('/tabs/Settings') ? 'bg-[#77898D]' : ''}`}
+            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Settings') ? 'bg-[#77898D]' : ''}`}
           >
             <Image src={icons.Settings} alt="Settings icon" width={20} height={20} />
-            <span className={`ml-2 text-[10px] ${isCollapsed ? 'hidden' : 'block'}`}>Settings</span>
+            <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Settings</span>
           </Link>
+            </div>
         </div>
       </div>
 
