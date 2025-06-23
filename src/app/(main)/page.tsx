@@ -54,13 +54,13 @@ const Page = () => {
             msOverflowStyle: 'none'  // IE and Edge
           }}
         >
-          <Card title="Notifications" icon={<FaBell size={16} />} items={Array(5).fill('New notification')} />
-           <Card title="Memo" icon={<Image src={icons.memo} alt="docs" width={16} height={16} />} items={Array(3).fill('New message')} />
-          <Card title="Departments" icon={<Image src={icons.Departments} alt="dept" width={16} height={16} />} items={Array(4).fill('Pending task')} />
-          <Card title="Clients" icon={<Image src={icons.Client} alt="clients" width={16} height={16} />} items={Array(2).fill('System alert')} />
-          <Card title="Tenants" icon={<Image src={icons.Tenant} alt="docs" width={16} height={16} />} items={Array(6).fill('Upcoming event')} />
-          <Card title="Events" icon={<Image src={icons.Meeting} alt="docs" width={16} height={16} />} items={Array(3).fill('New report')} />
-          <Card title="Settings" icon={<Image src={icons.Settings} alt="docs" width={16} height={16} />} items={Array(3).fill('Configuration')} />
+          <Card link="/notifications"  title="Notifications" icon={<FaBell size={16} />} items={Array(5).fill('New notification')} />
+           <Card link="/memolist" title="Memo" icon={<Image src={icons.memo} alt="docs" width={16} height={16} />} items={Array(3).fill('New message')} />
+          <Card link="/tabs/Departments" title="Departments" icon={<Image src={icons.Departments} alt="dept" width={16} height={16} />} items={Array(4).fill('Pending task')} />
+          <Card link="/tabs/Clients" title="Clients" icon={<Image src={icons.Client} alt="clients" width={16} height={16} />} items={Array(2).fill('System alert')} />
+          <Card link="/tenants" title="Tenants" icon={<Image src={icons.Tenant} alt="docs" width={16} height={16} />} items={Array(6).fill('Upcoming event')} />
+          <Card link="/tabs/Events" title="Events" icon={<Image src={icons.Meeting} alt="docs" width={16} height={16} />} items={Array(3).fill('New report')} />
+          <Card link="/tabs/Settings" title="Settings" icon={<Image src={icons.Settings} alt="docs" width={16} height={16} />} items={Array(3).fill('Configuration')} />
         </div>
         <div className="flex">
           <FeedCard />

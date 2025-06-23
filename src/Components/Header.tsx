@@ -82,7 +82,7 @@ import React from 'react';
 import images from '../../constants/images';
 import { FaAngleLeft, FaAngleRight, FaChevronDown } from 'react-icons/fa';
 import { useLogo } from './LogoContext';
-import { primary } from '../../constants/colors';
+// import { primary } from '../../constants/colors';
 
 function Header() {
   const { selectedLogo, setSelectedLogo } = useLogo();
@@ -120,39 +120,39 @@ function Header() {
         <div className="flex items-center relative">
           <button
             onClick={toggleDropdown}
-            className="flex items-center text-gray-700 font-bold text-sm hover:bg-gray-400 rounded-md px-3 py-1 transition-colors"
+            className="flex items-center pl-[1.5px] w-4 h-8 text-gray-700 font-bold text-sm hover:bg-gray-400 rounded-md transition-colors"
             aria-expanded={isDropdownOpen}
             aria-haspopup="true"
           >
-            <FaChevronDown className="ml-2 text-xs" />
+            <FaChevronDown className=" p-0 text-xs" />
           </button>
 
           {isDropdownOpen && (
             <div className="absolute right-0 top-full mt-1 w-40 bg-white rounded-md shadow-lg z-10">
               <button
                 onClick={() => selectLogo(1)}
-                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-amber-100 flex items-center"
+                className="w-full text-left px-4 py-2 mb text-sm text-gray-700 hover:bg-gray-100 flex items-center"
               >
                 Logo 1
               </button>
               <button
                 onClick={() => selectLogo(2)}
-                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-amber-100 flex items-center"
+                className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center"
               >
                 Logo 2
               </button>
             </div>
           )}
 
-          <div className="">
+          <div className=" mb-0 w-[110] h-[300]">
             {selectedLogo === 1 ? (
-              <Image src={images.HeaderLogo1} alt="Logo 1" width={110} height={200} />
+              <Image src={images.HeaderLogo1} alt="Logo 1" width={110} height={230} />
             ) : (
               <Image src={images.HeaderLogo2} alt="Logo 2" width={110} height={200} />
             )}
           </div>
         </div>
-        <div className="justify-between px-2 mx-8 mt-4 relative w-full m flex flex-row" style={{color: primary}}>
+        <div className={`justify-between relative px-2 mx-8 ${selectedLogo === 1 ?"m-[37px]":"mt-0"}  w-full m flex flex-row" style={{color: primary}}`}>
           <div className='font-bold text-2xl mt-4'>Welocme, Ibrahim!</div>
           <div className='font-bold mt-4'>Admistration</div>
         </div>

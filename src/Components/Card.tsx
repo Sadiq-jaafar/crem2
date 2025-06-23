@@ -44,14 +44,16 @@
 import React, { useState } from 'react';
 import { primary, secondary } from '../../constants/colors';
 import { FaChevronRight, FaCircle, FaEllipsisV } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 interface CardProps {
   title: string;
   icon: React.ReactNode;
   items?: string[];
+  link: string;
 }
 
-const Card = ({ title, icon, items = [] }: CardProps) => {
+const Card = ({ title, icon, link , items = [] }: CardProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
 
@@ -64,13 +66,20 @@ const Card = ({ title, icon, items = [] }: CardProps) => {
     setShowDropdown(false);
     // You can add additional logic here for pin/unpin functionality
   };
+  const navigate= useRouter()
+  const onClick =(link: string)=>{
+     navigate.push(link);
+    
+
+  }
 
   return (
     <div className='w-110 h-45 border border-gray-300 rounded-lg overflow-hidden flex flex-col'>
       {/* Header Section with icon next to title */}
       <div 
-        className="flex justify-between items-center"
+        className="flex justify-between items-center cursor-pointer"
         style={{ backgroundColor: primary }}
+        onClick= {()=> onClick(link)}
       >
         <div className="h-12 flex items-center px-4 gap-3 flex-1">
           <div className="text-white">
@@ -116,7 +125,8 @@ const Card = ({ title, icon, items = [] }: CardProps) => {
         style={{ backgroundColor: secondary }}
       >
         {items.length > 0 ? (
-          <ul className="divide-y divide-gray-200">
+          <ul className="">
+            {/* className="divide-y divide-gray-200 */}
             {items.map((item, index) => (
               <li
                 key={index}

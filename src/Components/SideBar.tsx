@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+
 import { usePathname } from 'next/navigation';
 import images from '../../constants/images';
 import { primary } from '../../constants/colors';
@@ -39,9 +39,9 @@ const SideBar: React.FC = () => {
         </div>
 
         {/* Navigation Links */}
-        <div className="flex flex-col  left-0 space-y-2">
+        <div className="flex flex-col items-center left-0 space-y-2">
 
-          <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between' : 'w-[120px]'} h-[32px] m-0 pl-[3px] py-[3px] fixed  left-0 items-center justify-center ${isActive('/') ? 'bg-[#77898D]' : ''}`}>
+          <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-center pl-5' : 'w-[120px] pl-[11px]'} h-[32px] m-0  py-[3px] fixed  left-0 items-center justify-center ${isActive('/') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/" 
@@ -52,7 +52,7 @@ const SideBar: React.FC = () => {
           </Link>
           </div>
 
-           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} fixed mt-9 py-[3px] pl-2 h-[32px] left-0 items-center justify-center ${isActive('/tabs/Projects') ? 'bg-[#77898D]' : ''}`}>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[14px]'} fixed mt-9 py-[3px] pl-2 h-[32px] left-0 items-center justify-center ${isActive('/tabs/Projects') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/tabs/Projects" 
@@ -63,7 +63,7 @@ const SideBar: React.FC = () => {
           </Link>
            </div>
 
-            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-18 pl-2 py-[3px] fixed h-[32px]  left-0 items-center justify-center`}>
+            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-18 pl-2 py-[3px] fixed h-[32px]  left-0 items-center justify-center`}>
 
           <Link 
             href="/tabs/Departments" 
@@ -73,7 +73,7 @@ const SideBar: React.FC = () => {
             <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Departments</span>
           </Link>
             </div>
-           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-27 pl-2 py-[3px] fixed h-[32px] left-0 items-center justify-center ${isActive('/tabs/Property') ? 'bg-[#77898D]' : ''}`}>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-27 pl-2 py-[3px] fixed h-[32px] left-0 items-center justify-center ${isActive('/tabs/Property') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/tabs/Property" 
@@ -83,7 +83,7 @@ const SideBar: React.FC = () => {
             <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Properties</span>
           </Link>
            </div>
-            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-36 pl-2 py-[4px] h-[32px] fixed  left-0 items-center justify-center ${isActive('/tabs/Clients') ? 'bg-[#77898D]' : ''}`}>
+            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-36 pl-2 pb-[7px] h-[32px] fixed  left-0 items-center justify-center ${isActive('/tabs/Clients') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/tabs/Clients" 
@@ -93,7 +93,7 @@ const SideBar: React.FC = () => {
             <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Clients</span>
           </Link>
             </div>
-           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-45 pl-2 py-[3px] h-[32px] fixed left-0 items-center justify-center ${isActive('/tabs/Meetings') ? 'bg-[#77898D]' : ''}`}>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-45 pl-2 py-[3px] h-[32px] fixed left-0 items-center justify-center ${isActive('/tabs/Meetings') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/tabs/Meetings" 
@@ -103,7 +103,7 @@ const SideBar: React.FC = () => {
             <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Events</span>
           </Link>
            </div>
-           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-54 py-[3px] pl-2 h-[32px] fixed left-0 items-center justify-center  ${isActive('/tabs/Drivers') ? 'bg-[#77898D]' : ''}`}>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-54 py-[3px] pl-2 h-[32px] fixed left-0 items-center justify-center  ${isActive('/tabs/Drivers') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/tabs/Drivers" 
@@ -113,7 +113,7 @@ const SideBar: React.FC = () => {
             <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Drivers</span>
           </Link>
            </div>
-           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-63 pl-2 py-[3px] h-[32px] fixed left-0 items-center justify-center ${isActive('/tabs/Finance') ? 'bg-[#77898D]' : ''}`}>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-63 pl-2 py-[3px] h-[32px] fixed left-0 items-center justify-center ${isActive('/tabs/Finance') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/tabs/Finance" 
@@ -124,7 +124,7 @@ const SideBar: React.FC = () => {
           </Link>
            </div>
            
-            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px]' : 'w-[120px]'} mt-72 py-[3px] pl-2 fixed h-[32px] left-0 items-center justify-center ${isActive('/tabs/Settings') ? 'bg-[#77898D]' : ''}`}>
+            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-72 py-[3px] pl-2 fixed h-[32px] left-0 items-center justify-center ${isActive('/tabs/Settings') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/tabs/Settings" 
@@ -145,10 +145,10 @@ const SideBar: React.FC = () => {
       {/* Toggle Button */}
       <button
         onClick={toggleSidebar}
-        className={`absolute ${isCollapsed ? 'left-[43px]' : 'left-[93px]'} items-center h-[50px] w-[30px] border-[1px] transition-all duration-300 ease-in-out top-1/2 transform -translate-y-1/2 translate-x-1/2 text-white p-2 rounded-full shadow-lg hover:bg-blue-600 focus:outline-none`}
+        className={`absolute ${isCollapsed ? 'left-[43px]' : 'left-[93px]'} items-center py-1 h-[30px] w-[26px]justify-center border-[1px] transition-all duration-300 ease-in-out top-1/2 transform -translate-y-1/2 translate-x-1/2 text-white p-2 rounded-[10px] shadow-lg hover:bg-blue-600 focus:outline-none`}
         style={{ borderColor: "#77898D", backgroundColor: primary }}
       >
-        {isCollapsed ? <FaChevronRight /> : <FaChevronLeft />}
+        {isCollapsed ? <Image src={icons.right} alt="Profile icon" width={7} height={20} /> : <Image src={icons.left} alt="Profile icon" width={7} height={20} />}
       </button>
     </div>
   );

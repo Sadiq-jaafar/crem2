@@ -36,6 +36,8 @@ import Prop2 from "../assets/icons/prop2.png";
 import logo from "../assets/icons/logo.png";
 import outgoing from "../assets/icons/outgoing.png";
 import incoming from "../assets/icons/incoming.png";
+import right from "../assets/icons/toggleLeft.png";
+import left from "../assets/icons/toggleRight.png";
 
 
 const icons ={
@@ -77,6 +79,8 @@ const icons ={
     logo,
     outgoing,
     incoming,
+    right,
+    left,
 
 
 
