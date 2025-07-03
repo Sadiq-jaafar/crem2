@@ -30,7 +30,7 @@ const Index = () => {
 
   return (
     <div className="h-screen bg-gray-100">
-      <Header3/>
+      <Header3 name="Memo"/>
       <main className="mx-auto px-4 py-6 sm:px-6">
         <div className="flex justify-between">
           <div className="flex-1 mr-4">

@@ -182,8 +182,7 @@ const Header2: React.FC = () => {
   };
 
   return (
-    <header className="h-12 bg-gray-100 w-full flex items-center justify-between px-4 shadow-sm relative">
-      <div className="flex items-center space-x-4">
+  <header className="h-12 bg-gray-100 relative  w- top-0 flex items-center justify-between px-4 shadow-sm z-40 ">      <div className="flex items-center space-x-4">
         <div className="flex space-x-1">
           <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
             <FaAngleLeft className="text-sm" />

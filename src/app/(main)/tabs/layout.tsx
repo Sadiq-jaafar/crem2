@@ -11,7 +11,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
-      <Header2 />
+      {/* <Header2 /> */}
 
       {/* Main Content */}
       <div className="flex-1 overflow-y-auto bg-gray-100">

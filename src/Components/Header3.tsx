@@ -8,9 +8,10 @@ import { useLogo } from './LogoContext';
 
 interface HeaderProps {
   isCollapsed?: boolean;
+  name: string;
 }
 
-const Header3: React.FC<HeaderProps> = ({ isCollapsed = false }) => {
+const Header3: React.FC<HeaderProps> = ({ isCollapsed = false, name }) => {
   const { selectedLogo, setSelectedLogo } = useLogo();
   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
 
@@ -40,7 +41,7 @@ const Header3: React.FC<HeaderProps> = ({ isCollapsed = false }) => {
             href="/memolist"
             className="font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors"
           >
-            Memos
+            {name}
           </Link>
         </nav>
       </div>

@@ -203,15 +203,11 @@ const MemoList = () => {
   ];
 
   const sidebarItems = [
-    { label: 'All Memos', count: 199, active: true },
-    { label: 'My Memos', count: 44 },
-    { label: 'My Teams', count: 33 },
-    { label: 'Drafts', count: 10 },
-    { label: 'Approved', count: 10 },
-    { label: 'Pending', count: 7 },
-    { label: 'Paid', count: 33 },
-    { label: 'Rejected', count: 9 },
-    { label: 'Completed', count: 70 }
+    { label: 'All Allocations', count: 199, active: true },
+    { label: 'KDM', count: 44 },
+    { label: 'FVE', count: 33 },
+    { label: 'Park-Lane', count: 10 },
+    
   ];
 
   const handleMemoClick = (memoId: string) => {
@@ -247,7 +243,7 @@ const MemoList = () => {
 
   return (
     <div className="h-screen relative flex flex-col  bg-gray-100"> {/* Added pt-12 for header space */}
-      <Header3 name= "Memo List" />
+      <Header3 name= "Allocations" />
       {/* Fixed Sidebar */}
       <div className="w-[146px] flex flex-col items-center bg-gray-100 border-r-2 border-gray-200 pt-15 fixed h-full overflow-y-auto no-scrollbar">
         <Button 
