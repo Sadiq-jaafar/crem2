@@ -63,7 +63,7 @@ const SideBar: React.FC = () => {
           </Link>
            </div>
 
-            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-18 pl-2 py-[3px] fixed h-[32px]  left-0 items-center justify-center`}>
+            <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-18 pl-2 py-[3px] fixed h-[32px]  left-0 items-center justify-center ${isActive('/tabs/Departments') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/tabs/Departments" 
@@ -93,11 +93,11 @@ const SideBar: React.FC = () => {
             <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Clients</span>
           </Link>
             </div>
-           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-45 pl-2 py-[3px] h-[32px] fixed left-0 items-center justify-center ${isActive('/tabs/Meetings') ? 'bg-[#77898D]' : ''}`}>
+           <div className={`hover:bg-[#77898D] ${isCollapsed ? 'w-[70px] itmes-center justify-between pl-6' : 'w-[120px] pl-[13px]'} mt-45 pl-2 py-[3px] h-[32px] fixed left-0 items-center justify-center ${isActive('/tabs/Events') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
-            href="/tabs/Meetings" 
-            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Meetings') ? 'bg-[#77898D]' : ''}`}
+            href="/tabs/Events" 
+            className={`flex items-center text-gray-200 hover:bg-[#77898D]  pt-1 ${isActive('/tabs/Events') ? 'bg-[#77898D]' : ''}`}
           >
             <Image src={icons.Meeting} alt="Meeting icon" width={20} height={20} />
             <span className={`ml-2 text-[12px] ${isCollapsed ? 'hidden' : 'block'}`}>Events</span>

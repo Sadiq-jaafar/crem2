@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, Upload, Download, ArrowUp, RefreshCw, ArrowRight } from 'lucide-react';
+import { Search, Upload, Download, ArrowUp, RefreshCw, ArrowRight, Check, Minus } from 'lucide-react';
 import { IoIosRefresh } from "react-icons/io";
 import { Button } from '@/Components/ui/button';
 import { Input } from '@/Components/ui/input';
@@ -11,7 +11,8 @@ import EditHeaderDialog from '@/Components/EditHeaderDialog';
 import Image from 'next/image';
 import icons from '../../../../../constants/icons';
 import Header3 from '@/Components/Header3';
-import Header from '@/Components/Header';
+import { FaRegTrashCan } from 'react-icons/fa6';
+import { IoShareSocialSharp } from 'react-icons/io5';
 
 interface Memo {
   id: string;
@@ -28,6 +29,8 @@ const MemoList = () => {
   const navigate = useRouter();
   const [showHeaderDialog, setShowHeaderDialog] = useState(false);
   const [checkedRows, setCheckedRows] = useState<Set<string>>(new Set());
+  const anyChecked = checkedRows.size > 0;
+  const [selectValue, setSelectValue] = useState("all");
 
   const memos: Memo[] = [
     {
@@ -278,17 +281,49 @@ const MemoList = () => {
         <div className="flex items-center h-8 ml-4 justify-between bg-gray-100 mb-4"> {/* Added h-8 */}
           {/* Left section */}
           <div className="flex items-center gap-2"> {/* Added gap-2 for consistent spacing */}
-            <Select defaultValue="all">
+            <Select value={selectValue} onValueChange={setSelectValue}>
               <SelectTrigger className="h-8 w-15 bg-gray-100 hover:bg-gray-200 border-none">
-                <SelectValue placeholder={<div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded cursor-pointer accent-teal-700"></div>} />
+                <SelectValue
+                  className="hover:bg-gray-200"
+                  placeholder={
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded cursor-pointer accent-teal-700"></div>
+                  }
+                >
+                  {selectValue === "read" && (
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded flex items-center justify-center accent-teal-700">
+                      <Check className="w-3 h-3 text-teal-700" />
+                    </div>
+                  )}
+                  {selectValue === "unread" && (
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded flex items-center justify-center accent-teal-700">
+                      <Minus className="w-3 h-3 text-teal-700" />
+                    </div>
+                  )}
+                  {selectValue === "incoming" && (
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded flex items-center justify-center accent-teal-700">
+                       <Image src={icons.incoming} width={12} height={12} alt="Outgoing" />
+                    </div>
+                  )}
+                  {selectValue === "outging" && (
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded flex items-center justify-center accent-teal-700">
+                       <Image src={icons.outgoing} width={12} height={12} alt="Outgoing" />
+                    </div>
+                  )}
+                  {selectValue === "all" && (
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded accent-teal-700"></div>
+                  )}
+                </SelectValue>
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all"><div className="w-4 h-4 bg-gray-100 border-1 border-gray-600 rounded cursor-pointer accent-teal-700"></div></SelectItem>
-                <SelectItem value="outgoing">Outgoing</SelectItem>
-                <SelectItem value="incoming">Incoming</SelectItem>
+              <SelectContent className="bg-gray-100">
+                <SelectItem value="all">
+                  All
+                </SelectItem>
+                <SelectItem value="read" className="hover:bg-gray-200">Read</SelectItem>
+                <SelectItem value="unread" className="hover:bg-gray-200">Unread</SelectItem>
+                <SelectItem value="incoming" className="hover:bg-gray-200">Incoming</SelectItem>
+                <SelectItem value="outgoing" className="hover:bg-gray-200">Outgoing</SelectItem>
               </SelectContent>
             </Select>
-            
             <Button variant="ghost" size="icon" className="hover:bg-gray-200 h-8 w-8">
               <IoIosRefresh className="h-4 w-4" />
             </Button>
@@ -297,12 +332,23 @@ const MemoList = () => {
               <SelectTrigger className="h-8 w-28 bg-gray-100 hover:bg-gray-200 border-none">
                 <SelectValue placeholder="All Types" />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Types</SelectItem>
-                <SelectItem value="outgoing">Outgoing</SelectItem>
-                <SelectItem value="incoming">Incoming</SelectItem>
+              <SelectContent className='bg-gray-10'>
+                <SelectItem value="all" className='bg-gray-100 hover:bg-gray-200'>All Types</SelectItem>
+                <SelectItem value="outgoing" className='bg-gray-100 hover:bg-gray-200'>Outgoing</SelectItem>
+                <SelectItem value="incoming" className='bg-gray-100 hover:bg-gray-200'>Incoming</SelectItem>
               </SelectContent>
             </Select>
+
+            {anyChecked && (
+                          <>
+                          <Button variant="ghost" size="icon" className="hover:bg-gray-200 h-8 w-8">
+                              <FaRegTrashCan className="h-4 w-4" />
+                          </Button>
+                          <Button variant="ghost" size="icon" className="hover:bg-gray-200 h-8 w-8">
+                              <IoShareSocialSharp className="h-4 w-4" />
+                           </Button>
+                           </>
+                        )}
           </div>
 
           {/* Center section - Search */}

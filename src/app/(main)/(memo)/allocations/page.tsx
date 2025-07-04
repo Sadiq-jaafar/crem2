@@ -1,204 +1,205 @@
 "use client"
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Search, Upload, Download, ArrowUp, RefreshCw, ArrowRight } from 'lucide-react';
+import { Search,  ArrowRight, Check, Minus } from 'lucide-react';
 import { IoIosRefresh } from "react-icons/io";
 import { Button } from '@/Components/ui/button';
-import { Input } from '@/Components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/Components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/Components/ui/table';
 import EditHeaderDialog from '@/Components/EditHeaderDialog';
 import Image from 'next/image';
 import icons from '../../../../../constants/icons';
 import Header3 from '@/Components/Header3';
-import Header from '@/Components/Header';
+import { FaRegTrashCan } from 'react-icons/fa6';
+import { IoShareSocialSharp } from 'react-icons/io5';
 
 interface Memo {
   id: string;
   type: string;
-  refNo: string;
-  to: string;
-  subject: string;
+  property: string;
+  unit: string;
   date: string;
-  amount: string;
+  paymentStatus: string;
   status: string;
 }
 
-const MemoList = () => {
+const Allocations = () => {
   const navigate = useRouter();
   const [showHeaderDialog, setShowHeaderDialog] = useState(false);
   const [checkedRows, setCheckedRows] = useState<Set<string>>(new Set());
+  const [selectValue, setSelectValue] = useState("all");
+  const anyChecked = checkedRows.size > 0;
 
   const memos: Memo[] = [
     {
       id: '1',
       type: 'up',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'not paid',
+      status: 'unread'
     },
     {
       id: '2',
       type: 'up',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'unread'
     },
     {
       id: '3',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'unread'
     },
     {
       id: '4',
       type: 'up',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'not paid',
+      status: 'unread'
     },
     {
       id: '5',
       type: 'up',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '6',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '7',
       type: 'up',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '8',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '9',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '10',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '11',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '12',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '13',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '14',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '15',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '16',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'read'
     },
     {
       id: '17',
       type: 'down',
-      refNo: 'RHL/ADM/05/05',
-      to: 'Managing director',
-      subject: 'Purchase of electrical appliances at FVE......',
+      property: 'Founting view estate, Gurara AA New site',
+      
+      unit: 'Purchase of electrical appliances at FVE......',
       date: '14/05/2025',
-      amount: '3,000,000.00',
-      status: 'Paid'
+      paymentStatus: 'paid',
+      status: 'unread'
     }
   ];
 
@@ -220,7 +221,7 @@ const MemoList = () => {
 
   const handleHeaderDialogSave = (_headerData: any) => {
     // Navigate to memo page with header data
-    navigate.push('/memo');
+    navigate.push('/allocation');
     setShowHeaderDialog(false);
   };
 
@@ -257,7 +258,7 @@ const MemoList = () => {
           {sidebarItems.map((item, index) => (
             <div
               key={index}
-              className={`flex justify-between items-center px-3 py-2 rounded text-sm cursor-pointer ${
+              className={`flex justify-between items-center px-1 py-2 rounded text-sm cursor-pointer ${
                 item.active ? 'bg-gray-300' : 'hover:bg-gray-300'
               }`}
             >
@@ -274,31 +275,52 @@ const MemoList = () => {
         <div className="flex items-center h-8 ml-4 justify-between bg-gray-100 mb-4"> {/* Added h-8 */}
           {/* Left section */}
           <div className="flex items-center gap-2"> {/* Added gap-2 for consistent spacing */}
-            <Select defaultValue="all">
+             <Select value={selectValue} onValueChange={setSelectValue}>
               <SelectTrigger className="h-8 w-15 bg-gray-100 hover:bg-gray-200 border-none">
-                <SelectValue placeholder={<div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded cursor-pointer accent-teal-700"></div>} />
+                <SelectValue
+                  className="hover:bg-gray-200"
+                  placeholder={
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded cursor-pointer accent-teal-700"></div>
+                  }
+                >
+                  {selectValue === "read" && (
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded flex items-center justify-center accent-teal-700">
+                      <Check className="w-3 h-3 text-teal-700" />
+                    </div>
+                  )}
+                  {selectValue === "unread" && (
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded flex items-center justify-center accent-teal-700">
+                      <Minus className="w-3 h-3 text-teal-700" />
+                    </div>
+                  )}
+                  {selectValue === "all" && (
+                    <div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded accent-teal-700"></div>
+                  )}
+                </SelectValue>
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all"><div className="w-4 h-4 bg-gray-100 border-1 border-gray-600 rounded cursor-pointer accent-teal-700"></div></SelectItem>
-                <SelectItem value="outgoing">Outgoing</SelectItem>
-                <SelectItem value="incoming">Incoming</SelectItem>
+              <SelectContent className="bg-gray-100">
+                <SelectItem value="all">
+                  All
+                </SelectItem>
+                <SelectItem value="read" className="hover:bg-gray-200">Read</SelectItem>
+                <SelectItem value="unread" className="hover:bg-gray-200">Unread</SelectItem>
               </SelectContent>
             </Select>
-            
             <Button variant="ghost" size="icon" className="hover:bg-gray-200 h-8 w-8">
               <IoIosRefresh className="h-4 w-4" />
             </Button>
+            {anyChecked && (
+              <>
+                          <Button variant="ghost" size="icon" className="hover:bg-gray-200 h-8 w-8">
+                          <FaRegTrashCan className="h-4 w-4" />
+                          </Button>
+                          <Button variant="ghost" size="icon" className="hover:bg-gray-200 h-8 w-8">
+                            <IoShareSocialSharp className="h-4 w-4" />
+                          </Button>
+                        </>
+                      )}
 
-            <Select defaultValue="all">
-              <SelectTrigger className="h-8 w-28 bg-gray-100 hover:bg-gray-200 border-none">
-                <SelectValue placeholder="All Types" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">All Types</SelectItem>
-                <SelectItem value="outgoing">Outgoing</SelectItem>
-                <SelectItem value="incoming">Incoming</SelectItem>
-              </SelectContent>
-            </Select>
+          
           </div>
 
           {/* Center section - Search */}
@@ -333,11 +355,11 @@ const MemoList = () => {
                 <TableHead className="w-8 flex-none border-b-0">
                 </TableHead>
                 <TableHead className="font-medium w-12 flex-none">Type</TableHead>
-                <TableHead className="font-medium w-32 flex-none">Ref. no.</TableHead>
-                <TableHead className="font-medium w-40 flex-none">To</TableHead>
-                <TableHead className="font-medium flex-1">Subject</TableHead>
+                <TableHead className="font-medium w-63 flex-none">Property</TableHead>
+                
+                <TableHead className="font-medium flex-1">Unit</TableHead>
+                <TableHead className="font-medium w-38 flex-none">Payment Status</TableHead>
                 <TableHead className="font-medium w-24 flex-none">Date</TableHead>
-                <TableHead className="font-medium w-28 flex-none">Amount</TableHead>
                 <TableHead className="font-medium w-24 flex-none">Status</TableHead>
               </TableRow>
             </TableHeader>
@@ -366,13 +388,25 @@ const MemoList = () => {
                       <Image src={icons.incoming} width={16} height={16} alt="incoming" />
                     )}
                   </TableCell>
-                  <TableCell className="text-sm w-32 flex-none">{memo.refNo}</TableCell>
-                  <TableCell className="text-sm w-40 flex-none ">{memo.to}</TableCell>
-                  <TableCell className="text-sm flex-1 whitespace-nowrap overflow-hidden text-ellipsis">{memo.subject}</TableCell>
+                  <TableCell className="text-sm w-63 flex-none whitespace-nowrap overflow-hidden text-ellipsis">{memo.property}</TableCell>
+                 
+                  <TableCell className="text-sm flex-1 whitespace-nowrap overflow-hidden text-ellipsis">{memo.unit}</TableCell>
+                  <TableCell className="text-sm w-38 flex-none whitespace-nowrap overflow-hidden text-ellipsis">
+                    {memo.paymentStatus === 'not paid' && (
+                      <span className="text-red-600 font-semibold">No Payment</span>
+                    )}
+                    {memo.paymentStatus === 'paid' && (
+                      <span className="text-green-600 font-semibold">Payment Complete</span>
+                    )}
+                    
+                  </TableCell>
                   <TableCell className="text-sm w-24 flex-none">{memo.date}</TableCell>
-                  <TableCell className="text-sm w-28 flex-none">{memo.amount}</TableCell>
-                  <TableCell className="w-24 flex-none">
-                    <span className="text-sm text-green-600 font-medium">{memo.status}</span>
+                  <TableCell className="w-24 flex-none flex items-center justify-center">
+                    {memo.status === "read" ? (
+                      <Image src={icons.read} width={16} height={16} alt="Read" />
+                    ) : (
+                      <Image src={icons.unread} width={16} height={16} alt="Unread" />
+                    )}
                   </TableCell>
                 </TableRow>
               ))}
@@ -393,85 +427,5 @@ const MemoList = () => {
   );
 };
 
-export default MemoList;
+export default Allocations;
 
-//  <div className="flex items-center ml-4 justify-between bg-gray-100 mb-4">
-//           {/* Left section */}
-//           <div className="flex items-center">
-//             {/* <input
-//               type="checkbox"
-//               className="w-4 h-4 border border-gray-600 rounded cursor-pointer accent-teal-700"
-//               onClick={(e) => e.stopPropagation()}
-//               onChange={(e) => {
-//                 // Add your checkbox change handler here
-//                 console.log('Checkbox clicked:', e.target.checked);
-//               }}
-//             />
-//             <Button variant="ghost" size="icon" className="h-8 w-8">
-//               <ArrowDown className="h-4 w-4" />
-//             </Button> */}
-//             <Select defaultValue="all">
-//               <SelectTrigger className="h-8 w-15 bg-gray-100 border-none">
-//                 <SelectValue placeholder={<div className="w-4 h-4 bg-gray-100 border-2 border-gray-600 rounded cursor-pointer accent-teal-700"></div>} />
-//               </SelectTrigger>
-//               <SelectContent>
-//                 <SelectItem value="all"><div className="w-4 h-4 bg-gray-100 border-1 border-gray-600 rounded cursor-pointer accent-teal-700"></div></SelectItem>
-//                 <SelectItem value="outgoing">Outgoing</SelectItem>
-//                 <SelectItem value="incoming">Incoming</SelectItem>
-//               </SelectContent>
-//             </Select>
-              
-//               <Button variant="ghost" size="icon" className="h-8 w-8">
-//               <IoIosRefresh className="h-4 w-4" />
-//             </Button>
-
-//             <Select defaultValue="all">
-//               <SelectTrigger className="h-8 w-28 bg-gray-100 hover:bg-gray-200 border-none">
-//                 <SelectValue placeholder="All Types" />
-//               </SelectTrigger>
-//               <SelectContent>
-//                 <SelectItem value="all">All Types</SelectItem>
-//                 <SelectItem value="outgoing">Outgoing</SelectItem>
-//                 <SelectItem value="incoming">Incoming</SelectItem>
-//               </SelectContent>
-//             </Select>
-//           </div>
-
-//           {/* Center section - Search */}
-//           <div className="relative mb-3 items-center w-full">
-                            
-                            
-//                             <input
-//                               type="search"
-//                               placeholder="Search"
-                             
-//                               className="w-full h-[31px] text-xs pl-8 p-1 border border-gray-300 rounded-full bg-gray-100 placeholder:text-sm placeholder-teal-700"
-//                               required
-//                             />
-//                             <span className="absolute right-4 top-1/2 transform -translate-y-1/2">
-//                               <ArrowRight className="h-4 w-4" />
-//                             </span>
-                          
-//           {/* <div className=" ml-0 w-full flex flex-row items-center max-w-xl ">
-//             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-//             <Input 
-//               type="search"
-//               placeholder="Search" 
-//               className="h-8 pl-10 pr-4 w-400 bg-white border-gray-200 rounded"
-//             />
-//              Right section
-//           <Button variant="ghost" size="icon" className="h-8 w-8 mr-4">
-//             <ArrowRight className="h-4 w-4" />
-//           </Button> */}
-           
-                            
-                           
-                      
-                          
-//           </div>
-
-//           {/* Right section
-//           <Button variant="ghost" size="icon" className="h-8 w-8">
-//             <ArrowRight className="h-4 w-4" />
-//           </Button> */}
-//         </div>

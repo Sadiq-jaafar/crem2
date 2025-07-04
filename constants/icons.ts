@@ -38,6 +38,9 @@ import outgoing from "../assets/icons/outgoing.png";
 import incoming from "../assets/icons/incoming.png";
 import right from "../assets/icons/toggleLeft.png";
 import left from "../assets/icons/toggleRight.png";
+import read from "../assets/icons/read.png";
+import unread from "../assets/icons/unread.png";
+import bell from "../assets/icons/bell.png";
 
 
 const icons ={
@@ -81,6 +84,9 @@ const icons ={
     incoming,
     right,
     left,
+    read,
+    unread,
+    bell,
 
 
 
