@@ -5,6 +5,10 @@ import HeaderLogo1 from "../assets/images/HeaderLogo.png";
 import HeaderLogo2 from "../assets/images/HeaderLog2.png";
 import signin from "../assets/images/signin.png";
 import logo2 from "../assets/images/logo2.png";
+import karmo from "../assets/images/karmo.png";
+import jabi from "../assets/images/jabi.png";
+import fountain from "../assets/images/fountain.png";
+
 
 
 const images = {
@@ -15,6 +19,9 @@ const images = {
   HeaderLogo2,
   signin,
   logo2,
+  karmo,
+  jabi,
+  fountain,
 };
 
 export default images;
