@@ -3,7 +3,7 @@
 import React from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { Star, StarHalf } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+
 
 interface ProjectEntry {
   image: string | StaticImageData;
@@ -11,23 +11,21 @@ interface ProjectEntry {
   type: string;
   id: string;
 }
-
-interface ProjectCardProps {
+type ProjectCardProps = {
   projects: ProjectEntry[];
-}
+  onProjectClick?: (project: ProjectEntry) => void;
+};
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ projects }) => {
-  const navigate = useRouter();
-  const onClick = (project: ProjectEntry) => {
-    navigate.push(`/${project.id}/project`);
-  };
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ projects , onProjectClick}) => {
+  
 
   return (
     <div className="flex flex-col gap-6 items-center">
       {projects.map((project, idx) => (
         <div
           key={idx}
-          onClick={() => onClick(project)}
+          onClick={() => onProjectClick && onProjectClick(project)}
           className="flex m-4 cursor-pointer bg-gray-600 text-white rounded-xl overflow-hidden shadow-lg w-full max-w-5xl"
         >
           {/* Image Section */}
