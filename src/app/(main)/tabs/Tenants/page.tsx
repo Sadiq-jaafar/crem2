@@ -2,20 +2,20 @@ import React from 'react'
 import images from '../../../../../constants/images'
 import Image from 'next/image'
 
-const Clients = () => {
+const Tenants = () => {
   return (
     <div>           <div className='ml-6 mt-6 mb-4'>
      <div className="flex  items-center mb-4">
-              <div className="mr-10 bg-gray-100 border-none">
+             
+             <div className="mr-10 bg-gray-100 border-none">
   <select defaultValue="all">
-    <option value="all" className='bg-gray-100 border-none'>All Clients List</option>
-    <option value="karmo"className='bg-gray-100 border-none'>Karmo Market Clients List</option>
-    <option value="jabi"className='bg-gray-100 border-none'>Jabi Clients List</option>
-    <option value="fountain"className='bg-gray-100 border-none'>Fountain View Clients List</option>
-    <option value="alaba"className='bg-gray-100 border-none'>Alaba Market Clients List</option>
+    <option value="all" className='bg-gray-100 border-none'>All Tenants List</option>
+    <option value="karmo"className='bg-gray-100 border-none'>Karmo Market Tenant List</option>
+    <option value="jabi"className='bg-gray-100 border-none'>Jabi Tenant List</option>
+    <option value="fountain"className='bg-gray-100 border-none'>Fountain View Tenant List</option>
+    <option value="alaba"className='bg-gray-100 border-none'>Alaba Market Tenant List</option>
   </select>
 </div>
-             
             </div>
      <div className="overflow-x-auto">
       <table className="min-w-full rounded-lg">
@@ -25,12 +25,12 @@ const Clients = () => {
             <th className="py-2 pl-0 px-4 text-left text-gray-600 text-[11px] border-b font-medium">Photo</th>
             <th className=" text-left text-gray-600 text-[11px] border-b font-medium">Owner Name</th>
             <th className=" p-1 text-left text-gray-600 text-[11px] border-b font-medium">Contact info</th>
-            <th className=" p-1 text-left text-gray-600 text-[11px] border-b font-medium">Country</th>
-            <th className=" p-1 text-left text-gray-600 text-[11px] border-b font-medium">State</th>
-            <th className=" p-1 text-left text-gray-600 text-[11px] border-b font-medium">City/Town</th>
-            <th className=" text-left text-gray-600 text-[11px] border-b font-medium">Property owened</th>
-            <th className=" p-2 text-left text-gray-600 text-[11px] border-b font-medium">Date Added</th>
-            <th className=" p-2 text-left text-gray-600 text-[11px] border-b font-medium">Payment Status</th>
+            <th className=" p-1 text-left text-gray-600 text-[11px] border-b font-medium">Property</th>
+            <th className=" p-1 text-left text-gray-600 text-[11px] border-b font-medium">Type</th>
+            <th className=" p-1 text-left text-gray-600 text-[11px] border-b font-medium">Unit</th>
+            <th className=" text-left text-gray-600 text-[11px] border-b font-medium">Rent Duration</th>
+            <th className=" p-2 text-left text-gray-600 text-[11px] border-b font-medium">Price</th>
+            <th className=" p-2 text-left text-gray-600 text-[11px] border-b font-medium">Rent Status</th>
             <th className=" p-2 text-left text-gray-600 text-[11px] border-b font-medium">Actions</th>
           </tr>
         </thead>
@@ -50,15 +50,15 @@ const Clients = () => {
                 <div className=" text-[11px]  text-gray-700">+2348062910352</div>
                 <div className="text-[11px]  text-green-700">ibtambaya@gmail.com</div>
               </td>
-              <td className=" text-[11px] border-b text-gray-700">Nigeria</td>
-              <td className=" p-2 text-[11px] border-b text-gray-700">Kano</td>
-              <td className=" p-2 text-[11px] border-b text-gray-700">Kano</td>
-              <td className=" text-[11px] border-b text-gray-700">5</td>
-              <td className=" p-2 text-[11px] border-b text-gray-700">2023-10-01</td>
+              <td className=" text-[11px] border-b text-gray-700">House</td>
+              <td className=" p-2 text-[11px] border-b text-gray-700">Duplex</td>
+              <td className=" p-2 text-[11px] border-b text-gray-700">1</td>
+              <td className=" text-[11px] border-b text-gray-700">5 years</td>
+              <td className=" p-2 text-[11px] border-b text-gray-700">20000</td>
               
               <td className=" p-2 text-[11px] border-b text-gray-700">{idx % 2 === 0 ?  
-                      <span className="text-red-600 ">pending</span>:
-                       <span className="text-green-600">Completed</span>}
+                      <span className="text-red-600 ">Not Acrive</span>:
+                       <span className="text-green-600">Active</span>}
                     </td>
             
               <td className="border-b">
@@ -77,4 +77,4 @@ const Clients = () => {
   )
 }
 
-export default Clients
+export default Tenants;
