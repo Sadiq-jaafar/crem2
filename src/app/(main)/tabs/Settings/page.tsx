@@ -16,7 +16,7 @@ const SEttings = () => {
     <div className="">
     <div className='m-6'>
       <div>
-        <span className="p-4">Personal</span>
+        <span className="p-4 font-bold">Personal</span>
         <div className="grid grid-cols-4">
           <SettingsCard
             id='1'
@@ -28,7 +28,7 @@ const SEttings = () => {
       </div>
 
       <div>
-        <span className="p-4">Company</span>
+        <span className="p-4 font-bold">Company</span>
         <div className="flex flex-wrap">
           <SettingsCard
             id='2'
@@ -44,7 +44,7 @@ const SEttings = () => {
           />
         </div>
         <div>
-        <span className="p-4">Display</span>
+        <span className="p-4 font-bold">Display</span>
         <div className="grid grid-cols-4">
           
           <SettingsCard2/>

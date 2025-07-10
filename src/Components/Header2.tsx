@@ -195,7 +195,7 @@ const Header2: React.FC = () => {
         <nav className="flex items-center space-x-1">
           <Link
             href="/tabs/Projects"
-            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-[16px] transition-colors ${
               isActive("/tabs/Projects") ? "bg-gray-400" : ""
             }`}
           >
@@ -203,7 +203,7 @@ const Header2: React.FC = () => {
           </Link>
           <Link
             href="/tabs/Property"
-            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-[16px] transition-colors ${
               isActive("/tabs/Property") ? "bg-gray-400" : ""
             }`}
           >
@@ -211,7 +211,7 @@ const Header2: React.FC = () => {
           </Link>
           <Link
             href="/tabs/Clients"
-            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-[16px] transition-colors ${
               isActive("/tabs/Clients") ? "bg-gray-400" : ""
             }`}
           >
@@ -219,7 +219,7 @@ const Header2: React.FC = () => {
           </Link>
           <Link
             href="/tabs/Tenants"
-            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-[16px] transition-colors ${
               isActive("/tabs/Tenants") ? "bg-gray-400" : ""
             }`}
           >
@@ -227,28 +227,14 @@ const Header2: React.FC = () => {
           </Link>
           <Link
             href="/tabs/Agents"
-            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
+            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-[16px] transition-colors ${
               isActive("/tabs/Agents") ? "bg-gray-400" : ""
             }`}
           >
             Agents
           </Link>
-          <Link
-            href="/tabs/NewList"
-            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md px-3 py-1 text-sm transition-colors ${
-              isActive("/tabs/NewList") ? "bg-gray-400" : ""
-            }`}
-          >
-            New List
-          </Link>
-          <Link
-            href="/tabs/Add"
-            className={`font-bold text-gray-700 hover:bg-gray-400 rounded-md p-1 text-sm transition-colors ${
-              isActive("/tabs/Add") ? "bg-gray-400" : ""
-            }`}
-          >
-            <FaPlus />
-          </Link>
+         
+         
         </nav>
       </div>
 
