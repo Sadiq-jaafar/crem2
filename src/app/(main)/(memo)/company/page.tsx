@@ -44,16 +44,20 @@ const Project = () => {
     
   ]);
   const [properties, setProperties] = useState([
-    { no: 2, profession: "Stations" },
-    { no: "Rural Homes Limited", profession: "Jabi, Abuja" },
-    { no: "Homes Group Limited", profession: "Karmo Abuja" },
-    { no: "Homes Group Limited", profession: "Karmo Abuja" },
+    { no: 2, profession: "Selling Properties" },
+    { no: "13", profession: "Sold Properties" },
+    { no: "5", profession: "Upcomming properties" },
+    { no: "5", profession: "Upcomming properties" },
+    
     
   ]);
   const [showTeamDialog, setShowTeamDialog] = useState(false);
   const [newNo, setNewNo] = useState('');
   const [newProfession, setNewProfession] = useState('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [selectedDeleteId, setSelectedDeleteId] = useState<number | null>(null);
+
  
   
   
@@ -92,6 +96,7 @@ const Project = () => {
   };
 
   // File dialog handler
+  
   
 
   return (
@@ -263,7 +268,15 @@ const Project = () => {
                 <div className="flex p-2 gap-2">
                   <button className="text-[11px] bg-gray-200 px-3 py-1 rounded text-gray-700 text-sm">View</button>
                   <button className="text-[11px] bg-gray-200 px-3 py-1 rounded text-gray-700 text-sm">Edit</button>
-                  <button className="text-[11px] bg-gray-200 px-3 py-1 rounded text-gray-700 text-sm">Delete</button>
+                  <button
+  className="text-[11px] bg-gray-200 px-3 py-1 cursor-pointer rounded text-gray-700 text-sm"
+  onClick={() => {
+    setSelectedDeleteId(sn); // you can replace this with a unique ID if available
+    setShowDeleteDialog(true);
+  }}
+>
+  Delete
+</button>
                 </div>
               </td>
             </tr>
@@ -272,7 +285,37 @@ const Project = () => {
       </table>
     </div>
   </div>
+  
+)}{showDeleteDialog && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-30">
+    <div className="bg-white rounded-md p-6 shadow-lg min-w-[300px]">
+      <h2 className="text-lg font-semibold mb-4">Confirm Deletion</h2>
+      <p className="mb-6 text-sm text-gray-700">Are you sure you want to delete the profile of as member?</p>
+      <div className="flex justify-end gap-4">
+        <button
+          className=" text-gray-800 px-4 py-2 rounded hover:bg-gray-300"
+          onClick={() => setShowDeleteDialog(false)}
+        >
+          Cancel
+        </button>
+        <button
+          className="bg-[#09342D] text-white px-4 py-2 cursor-pointer rounded hover:bg-red-700"
+          onClick={() => {
+            // TODO: perform deletion logic
+            console.log('Deleting item with ID:', selectedDeleteId);
+
+            // close dialog after delete
+            setShowDeleteDialog(false);
+            setSelectedDeleteId(null);
+          }}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
 )}
+
 
         {activeTab === "properties" && (
           <div className=''>
