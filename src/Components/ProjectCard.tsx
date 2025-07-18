@@ -26,7 +26,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ projects , onProjectClick}) =
         <div
           key={idx}
           onClick={() => onProjectClick && onProjectClick(project)}
-          className="flex m-4 cursor-pointer bg-gray-600 text-white rounded-xl overflow-hidden shadow-lg w-full max-w-5xl"
+          className="flex m-4 cursor-pointer bg-white dark:bg-gray-800 text-gray-900 dark:text-white rounded-xl overflow-hidden shadow-lg w-full max-w-5xl transition-colors"
         >
           {/* Image Section */}
           <Image
@@ -40,12 +40,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ projects , onProjectClick}) =
           <div className="w-1/2 p-6 flex flex-col justify-between">
             <div>
               <h2 className="text-3xl font-semibold mb-2">{project.name}</h2>
-              <p className="text-lg text-gray-300">{project.type}</p>
+              <p className="text-lg text-gray-600 dark:text-gray-300">{project.type}</p>
             </div>
 
             {/* Rating */}
             <div className="flex justify-end mt-4">
-              <div className="flex text-yellow-400">
+              <div className="flex text-yellow-500 dark:text-yellow-400">
                 <Star fill="currentColor" />
                 <Star fill="currentColor" />
                 <Star fill="currentColor" />

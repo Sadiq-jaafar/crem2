@@ -107,14 +107,14 @@ const Project = () => {
   };
 
   return (
-    <div className='max-h-screen overflow-auto bg-gray-100 scrollbar-none'>
+    <div className='max-h-screen overflow-auto bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white scrollbar-none transition-colors'>
         <Header3 name='Project'/>
-        <div className="flex  flex-col md:flex-row gap-6 p-6 bg-gray-100  mb-8 "> {/*ax-h-[calc(100vh-50px)]*/}
+        <div className="flex flex-col md:flex-row gap-6 p-6 bg-gray-100 dark:bg-gray-900 mb-8 transition-colors"> {/*ax-h-[calc(100vh-50px)]*/}
       {/* Form Section */}
       <div className="flex-1 max-h-[calc(100vh-50px)] w-[826px] pr-10 overflow-auto scrollbar-none md:w-1/3 ">
-      <div className="flex-1 border-[2px] border-gray-300 rounded-md p-4">
+      <div className="flex-1 border-[2px] border-gray-300 dark:border-gray-700 rounded-md p-4 bg-white dark:bg-gray-800 transition-colors">
         <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input className="border border-[ #414C52] rounded-md placeholder-[#414C52] text-[12px] h-[40px] p-2" placeholder="Registration Number(ID)" />
+          <input className="border border-[#414C52] dark:border-gray-600 rounded-md placeholder-[#414C52] dark:placeholder-gray-400 text-[12px] h-[40px] p-2 bg-white dark:bg-gray-900 text-gray-900 dark:text-white" placeholder="Registration Number(ID)" />
           <input className="border border-[ #414C52] rounded-md placeholder-[#414C52] text-[12px] h-[40px] p-2" placeholder="Project Name" />
           <input className="border border-[ #414C52] rounded-md placeholder-[#414C52] text-[12px] h-[40px] p-2" placeholder="Type" />
           <input className="border border-[ #414C52] rounded-md placeholder-[#414C52] text-[12px] h-[40px] p-2" placeholder="Location" />
@@ -131,15 +131,15 @@ const Project = () => {
        {/* Tabs Section */}
     <div className="w-full mt-8">
       {/* Tab Headers */}
-      <div className="flex h-[32px] bg-gray-200 rounded-md mb-4">
+      <div className="flex h-[32px] bg-gray-200 dark:bg-gray-800 rounded-md mb-4 transition-colors">
         {tabList.map(tab => (
           <button
             key={tab.key}
             className={`flex-1  m-1 h-[24px] juastify-center items-center text-[11.86px] font-[ #414C52];
 ] text-center rounded-md transition-colors ${
               activeTab === tab.key
-                ? "bg-white shadow "
-                : "bg-gray-200"
+                ? "bg-white dark:bg-gray-900 shadow "
+                : "bg-gray-200 dark:bg-gray-800"
             }`}
             onClick={() => setActiveTab(tab.key)}
           >
@@ -149,7 +149,7 @@ const Project = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="bg-gray-100 rounded-md p-4 border-gray-300 border">
+      <div className="bg-gray-100 dark:bg-gray-800 rounded-md p-4 border-gray-300 dark:border-gray-700 border transition-colors">
         {activeTab === "teams" && (
           <div className=''>
              <div className="flex items-center mb-4">
@@ -158,7 +158,7 @@ const Project = () => {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="w-[588px] ml-4 pl-8 pr-2 py-1 rounded-full border border-gray-300 bg-gray-100 text-sm placeholder:text-sm placeholder-teal-700"
+                  className="w-[588px] ml-4 pl-8 pr-2 py-1 rounded-full border border-gray-300 bg-gray-100 dark:bg-gray-900 dark:text-white text-sm placeholder:text-sm placeholder-teal-700"
                 />
 
                 <Search className="absolute left-142 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black" />
@@ -167,13 +167,13 @@ const Project = () => {
             </div>
             <div className="grid grid-cols-3 gap-4 gap-x-4">
               {teams.map((team, idx) => (
-                <div key={idx} className="bg-gray-200 w-[226px] rounded-lg p-4 pb-4">
+                <div key={idx} className="bg-gray-200 dark:bg-gray-700 w-[226px] rounded-lg p-4 pb-4">
                   <div className="font-bold">{team.no}</div>
                   <div>{team.profession}</div>
                 </div>
               ))}
               <div
-                className="bg-gray-200 w-[226px] rounded-lg p-4 pb-4 flex items-center justify-center text-2xl text-green-900 cursor-pointer"
+                className="bg-gray-200 dark:bg-gray-700 w-[226px] rounded-lg p-4 pb-4 flex items-center justify-center text-2xl text-green-900 cursor-pointer"
                 onClick={() => setShowTeamDialog(true)}
               >
                 +
@@ -183,7 +183,7 @@ const Project = () => {
             {/* Team Add Dialog */}
             {showTeamDialog && (
               <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-10">
-                <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 min-w-[300px]">
+                <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 flex flex-col gap-4 min-w-[300px]">
                   <div className="text-lg font-semibold mb-2">Add Team</div>
                   <input
                     type="number"
@@ -214,7 +214,7 @@ const Project = () => {
                       Add
                     </button>
                     <button
-                      className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+                      className="bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded hover:bg-gray-400"
                       onClick={() => setShowTeamDialog(false)}
                     >
                       Cancel
@@ -234,7 +234,7 @@ const Project = () => {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="w-[588px] ml-4 pl-8 pr-2 py-1 rounded-full border border-gray-300 bg-gray-100 text-sm placeholder:text-sm placeholder-teal-700"
+                  className="w-[588px] ml-4 pl-8 pr-2 py-1 rounded-full border border-gray-300 bg-gray-100 dark:bg-gray-900 dark:text-white text-sm placeholder:text-sm placeholder-teal-700"
                 />
 
                 <Search className="absolute left-142 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black" />
@@ -243,7 +243,7 @@ const Project = () => {
             </div>
             <div className="flex gap-4">
               {files.map((file, idx) => (
-                <div key={idx} className="bg-gray-200 rounded-lg p-4 flex flex-col items-center w-40">
+                <div key={idx} className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 flex flex-col items-center w-40">
                   <img src={file.icon} alt="File" className="w-16 h-16 mb-2" />
                   <div className="text-sm mb-2">{file.name}</div>
                   <div className="flex gap-2">
@@ -254,7 +254,7 @@ const Project = () => {
                 </div>
               ))}
               <div
-                className="bg-gray-200 rounded-lg p-4 flex items-center justify-center w-40 text-2xl text-green-900 cursor-pointer"
+                className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 flex items-center justify-center w-40 text-2xl text-green-900 cursor-pointer"
                 onClick={() => setShowFileDialog(true)}
               >
                 +
@@ -264,7 +264,7 @@ const Project = () => {
             {/* File Add Dialog */}
             {showFileDialog && (
               <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-10">
-                <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 min-w-[300px]">
+                <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 flex flex-col gap-4 min-w-[300px]">
                   <div className="text-lg font-semibold mb-2">Add File</div>
                   <input
                     type="text"
@@ -295,7 +295,7 @@ const Project = () => {
                       Add
                     </button>
                     <button
-                      className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+                      className="bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded hover:bg-gray-400"
                       onClick={() => setShowFileDialog(false)}
                     >
                       Cancel
@@ -311,10 +311,10 @@ const Project = () => {
           <div>
             <div className="font-semibold mb-2">Progress</div>
             <div className="flex gap-4">
-              <div className="bg-gray-200 rounded-lg p-4 flex-1 min-w-[220px]">
+              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 flex-1 min-w-[220px]">
                 <div className="font-bold">Construction Progress</div>
                 <div className="flex items-center my-2">
-                  <div className="flex-1 h-2 bg-gray-400 rounded">
+                  <div className="flex-1 h-2 bg-gray-400 dark:bg-gray-700 rounded">
                     <div className="h-2 bg-green-900 rounded" style={{ width: "65%" }}></div>
                   </div>
                   <div className="w-4 h-4 bg-red-600 rounded-full ml-2"></div>
@@ -324,10 +324,10 @@ const Project = () => {
                   <span>Phase 3 of 6</span>
                 </div>
               </div>
-              <div className="bg-gray-200 rounded-lg p-4 flex-1 min-w-[220px]">
+              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 flex-1 min-w-[220px]">
                 <div className="font-bold">Budget Utilization</div>
                 <div className="flex items-center my-2">
-                  <div className="flex-1 h-2 bg-gray-400 rounded">
+                  <div className="flex-1 h-2 bg-gray-400 dark:bg-gray-700 rounded">
                     <div className="h-2 bg-green-900 rounded" style={{ width: "58%" }}></div>
                   </div>
                   <div className="w-4 h-4 bg-red-600 rounded-full ml-2"></div>
@@ -337,10 +337,10 @@ const Project = () => {
                   <span>12% Under</span>
                 </div>
               </div>
-              <div className="bg-gray-200 rounded-lg p-4 flex-1 min-w-[220px]">
+              <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 flex-1 min-w-[220px]">
                 <div className="font-bold">Unit Pre-sale</div>
                 <div className="flex items-center my-2">
-                  <div className="flex-1 h-2 bg-gray-400 rounded">
+                  <div className="flex-1 h-2 bg-gray-400 dark:bg-gray-700 rounded">
                     <div className="h-2 bg-green-900 rounded" style={{ width: "30%" }}></div>
                   </div>
                   <div className="w-4 h-4 bg-red-600 rounded-full ml-2"></div>
@@ -363,7 +363,7 @@ const Project = () => {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="w-[588px] ml-4 pl-8 pr-2 py-1 rounded-full border border-gray-300 bg-gray-100 text-sm placeholder:text-sm placeholder-teal-700"
+                  className="w-[588px] ml-4 pl-8 pr-2 py-1 rounded-full border border-gray-300 bg-gray-100 dark:bg-gray-900 dark:text-white text-sm placeholder:text-sm placeholder-teal-700"
                 />
 
                 <Search className="absolute left-142 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black" />
@@ -372,13 +372,13 @@ const Project = () => {
             </div>
             <div className="grid grid-cols-3 gap-4">
               {notes.map((note, idx) => (
-                <div key={idx} className="bg-gray-200 rounded-lg p-4">
+                <div key={idx} className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4">
                   <div className="font-bold">{note.title}</div>
                   <div className="text-xs">{note.desc}</div>
                 </div>
               ))}
               <div
-                className="bg-gray-200 justify-center items-center text-center rounded-lg p-4 cursor-pointer"
+                className="bg-gray-200 dark:bg-gray-700 justify-center items-center text-center rounded-lg p-4 cursor-pointer"
                 onClick={() => setShowNoteDialog(true)}
               >
                 +
@@ -388,7 +388,7 @@ const Project = () => {
             {/* Note Add Dialog */}
             {showNoteDialog && (
               <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-10">
-                <div className="bg-white rounded-lg shadow-lg p-6 flex flex-col gap-4 min-w-[300px]">
+                <div className="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6 flex flex-col gap-4 min-w-[300px]">
                   <div className="text-lg font-semibold mb-2">Add Note/Report</div>
                   <input
                     type="text"
@@ -418,7 +418,7 @@ const Project = () => {
                       Add
                     </button>
                     <button
-                      className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+                      className="bg-gray-300 dark:bg-gray-700 px-4 py-2 rounded hover:bg-gray-400"
                       onClick={() => setShowNoteDialog(false)}
                     >
                       Cancel
@@ -451,7 +451,7 @@ const Project = () => {
             {(selectedImages.length > 0 ? selectedImages : [images.karmo]).map((_, idx) => (
               <div
                 key={idx}
-                className={`w-3 h-3 rounded-full border border-gray-400 cursor-pointer ${currentImageIndex === idx ? 'bg-black' : 'bg-white'}`}
+                className={`w-3 h-3 rounded-full border border-gray-400 dark:border-gray-600 cursor-pointer ${currentImageIndex === idx ? 'bg-black dark:bg-white' : 'bg-white dark:bg-black'}`}
                 onClick={() => setCurrentImageIndex(idx)}
               ></div>
             ))}
@@ -495,7 +495,7 @@ const Project = () => {
         {/* Saved Dialog */}
         {showSavedDialog && (
           <div className="fixed inset-0 flex items-center justify-center z-10 bg-black/80 bg-opacity-50">
-            <div className="bg-white rounded-2xl shadow-lg flex flex-col items-center justify-center p-8">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg flex flex-col items-center justify-center p-8">
               <svg width="120" height="120" viewBox="0 0 120 120" fill="none">
                 <circle cx="60" cy="60" r="50" stroke="#13322B" strokeWidth="6"/>
                 <path d="M40 65L55 80L80 50" stroke="#13322B" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round"/>

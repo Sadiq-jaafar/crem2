@@ -157,16 +157,23 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { FaAngleRight, FaAngleLeft, FaPlus, FaChevronDown } from "react-icons/fa";
+import {  FaChevronDown } from "react-icons/fa";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname , useRouter} from "next/navigation";
 import images from "../../constants/images";
 import { useLogo } from './LogoContext';
+import icons from "../../constants/icons";
 
 const Header2: React.FC = () => {
   const pathname = usePathname();
   const { selectedLogo, setSelectedLogo } = useLogo();
   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
+
+  const navigation = useRouter();
+
+  const onBack= ()=>{
+    navigation.back()
+  }
 
   const toggleDropdown = (): void => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -184,11 +191,23 @@ const Header2: React.FC = () => {
   return (
   <header className="h-12 bg-gray-100 relative  w- top-0 flex items-center justify-between px-4 shadow-sm z-40 ">      <div className="flex items-center space-x-4">
         <div className="flex space-x-1">
-          <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
-            <FaAngleLeft className="text-sm" />
+          <button 
+          onClick={onBack}
+          className="text-gray-700 hover:bg-gray-400 p-1 rounded">
+             <Image
+               src={icons.leftAr}
+              alt="Left Arrow"
+             width={20}
+            height={20}
+            />
           </button>
           <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
-            <FaAngleRight className="text-sm" />
+             <Image
+                    src={icons.rightAr}
+                    alt="Left Arrow"
+                    width={20}
+                    height={20}
+                  />
           </button>
         </div>
 

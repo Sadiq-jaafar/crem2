@@ -1,19 +1,26 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { FaAngleRight, FaAngleLeft, FaChevronDown } from "react-icons/fa";
+import {  FaChevronDown } from "react-icons/fa";
 import Image from "next/image";
 import images from "../../constants/images";
 import { useLogo } from './LogoContext';
+import icons from "../../constants/icons";
+import { useRouter } from "next/navigation";
 
 interface HeaderProps {
   isCollapsed?: boolean;
   name: string;
 }
 
-const Header3: React.FC<HeaderProps> = ({ isCollapsed = false, name }) => {
+const Header3: React.FC<HeaderProps> = ({  name }) => {
   const { selectedLogo, setSelectedLogo } = useLogo();
   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
+
+  const navigation = useRouter();
+  const onBack = () => {
+    navigation.back();
+  };
 
   const toggleDropdown = (): void => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -28,12 +35,24 @@ const Header3: React.FC<HeaderProps> = ({ isCollapsed = false, name }) => {
     <header className="h-12 bg-gray-100 relative  w- top-0 flex items-center justify-between px-4 shadow-sm z-40 ">
       <div className="flex items-center space-x-4">
         <div className="flex space-x-1">
-          <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
-            <FaAngleLeft className="text-sm" />
-          </button>
-          <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
-            <FaAngleRight className="text-sm" />
-          </button>
+           <button 
+           onClick={onBack}
+           className="text-gray-700 hover:bg-gray-400 p-1 rounded">
+                       <Image
+                         src={icons.leftAr}
+                        alt="Left Arrow"
+                       width={20}
+                      height={20}
+                      />
+                    </button>
+                    <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
+                       <Image
+                              src={icons.rightAr}
+                              alt="Left Arrow"
+                              width={20}
+                              height={20}
+                            />
+                    </button>
         </div>
 
         <nav className="flex items-center space-x-1">

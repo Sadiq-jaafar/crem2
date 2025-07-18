@@ -80,13 +80,20 @@
 import Image from 'next/image';
 import React from 'react';
 import images from '../../constants/images';
-import { FaAngleLeft, FaAngleRight, FaChevronDown } from 'react-icons/fa';
+import {  FaChevronDown } from 'react-icons/fa';
 import { useLogo } from './LogoContext';
+import icons from '../../constants/icons';
+import { useRouter } from 'next/navigation';
 // import { primary } from '../../constants/colors';
 
 function Header() {
   const { selectedLogo, setSelectedLogo } = useLogo();
   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
+
+  const navigation = useRouter();
+  const onBack = () => {
+    navigation.back();
+  }
 
   const toggleDropdown = (): void => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -108,11 +115,23 @@ function Header() {
         className='rounded-b-lg'
       />
       <div className=" top-1 space-x-1">
-                <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
-                  <FaAngleLeft className="text-sm" />
+                <button 
+                onClick={onBack}
+                className="text-gray-700 hover:bg-gray-400 p-1 rounded">
+                  <Image
+                    src={icons.leftAr}
+                    alt="Left Arrow"
+                    width={20}
+                    height={20}
+                  />
                 </button>
                 <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
-                  <FaAngleRight className="text-sm" />
+                  <Image
+                    src={icons.rightAr}
+                    alt="Left Arrow"
+                    width={20}
+                    height={20}
+                  />
                 </button>
               </div>
 

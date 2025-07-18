@@ -14,13 +14,13 @@ const SettingsCard = ({ onSettingsClick, settingName, purpose, id }: SettingsCar
   return (
     <div
       key={id}
-      className="flex w-[293px] h-[106px] bg-white m-4 rounded-xl shadow-md max-w-md overflow-hidden cursor-pointer"
+      className="flex w-[293px] h-[106px] bg-white dark:bg-gray-800 m-4 rounded-xl shadow-md max-w-md overflow-hidden cursor-pointer transition-colors"
       onClick={onSettingsClick}
     >
-      <div className="bg-gray-300 w-[82px] flex items-center justify-center p-4">
+      <div className="bg-gray-300 dark:bg-gray-700 w-[82px] flex items-center justify-center p-4 transition-colors">
         <UsersIcon className="text-green-900" />
       </div>
-      <div className="p-4 bg-white space-y-2">
+      <div className="p-4 bg-white dark:bg-gray-800 space-y-2 transition-colors">
         <h2 className="font-bold text-[12px]">{settingName}</h2>
         <div className="text-[10px]">{purpose}</div>
       </div>

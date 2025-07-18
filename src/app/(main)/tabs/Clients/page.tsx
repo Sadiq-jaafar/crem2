@@ -71,7 +71,9 @@ const navigate = useRouter();
             
               <td className="border-b">
                 <div className="flex p-2 gap-2">
-                  <button className=" bg-gray-200 px-3 py-1 rounded text-gray-700 text-[14px]">Edit</button>
+                  <button 
+                  onClick={handleView}
+                  className=" bg-gray-200 px-3 py-1 rounded text-gray-700 text-[14px]">Edit</button>
                   <button 
                   onClick={handleView}
                   className=" bg-gray-200 px-3 cursor-pointer  py-1 rounded text-gray-700 text-[14px]">View</button>

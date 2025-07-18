@@ -39,9 +39,9 @@ const Departments = () => {
   //   setMembers([...members, newMember]);
   // };
   return (
-     <div className='max-h-screen overflow-auto scrollbar-none'>
+     <div className='max-h-screen overflow-auto scrollbar-none bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors'>
         <Header3 name='Departments/Teams>Aminidtration'/>
-        <div className="flex  flex-col  bg-gray-100  mb-8 ">
+        <div className="flex flex-col bg-gray-100 dark:bg-gray-900 mb-8 transition-colors">
 
           <RolePermissionsCard
           image={icons.Settings}
@@ -74,18 +74,18 @@ const Departments = () => {
                 <input
                   type="text"
                   placeholder="Search"
-                  className="w-[588px] ml-4 pl-8 pr-2 py-1 rounded-full border border-gray-300 bg-gray-100 text-sm placeholder:text-sm placeholder-teal-700"
+                  className="w-[588px] ml-4 pl-8 pr-2 py-1 rounded-full border border-gray-300 bg-gray-100 dark:bg-gray-900 dark:text-white text-sm placeholder:text-sm placeholder-teal-700"
                 />
 
-                <Search className="absolute left-142 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black" />
-                <span className="absolute pb-[5px] mb-[4px] left-139 top-1/2 transform -translate-y-1/2 text-black">|</span>
+                <Search className="absolute left-142 top-1/2 transform -translate-y-1/2 h-4 w-4 text-black dark:text-white" />
+                <span className="absolute pb-[5px] mb-[4px] left-139 top-1/2 transform -translate-y-1/2 text-black dark:text-white">|</span>
               </div>
             </div>
      <div className="overflow-x-auto">
       <table className="min-w-full rounded-lg">
         <thead>
           <tr className="">
-            <th className=" text-left text-gray-600 text-[11px] font-[11.85px]">SN</th>
+            <th className=" text-left text-gray-600 dark:text-gray-300 text-[11px] font-[11.85px]">SN</th>
             <th className="py-2 pl-0 px-4 text-left text-gray-600 text-[11px] border-b font-medium">Photo</th>
             <th className=" text-left text-gray-600 text-[11px] border-b font-medium">Owner Name</th>
             <th className=" p-1 text-left text-gray-600 text-[11px] border-b font-medium">Contact info</th>
@@ -116,7 +116,7 @@ const Departments = () => {
               <td className=" p-2 text-[11px] border-b text-gray-700">Active</td>
               <td className="border-b">
                 <div className="flex p-2 gap-2">
-                  <button className="text-[11px] bg-gray-200 px-3 py-1 rounded text-gray-700 text-sm">View</button>
+                  <button className="text-[11px] bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded text-gray-700 dark:text-gray-200 text-sm">View</button>
                   <button className="text-[11px] bg-gray-200 px-3 py-1 rounded text-gray-700 text-sm">Edit</button>
                   <button className="text-[11px] bg-gray-200 px-3 py-1 rounded text-gray-700 text-sm">Delete</button>
                 </div>

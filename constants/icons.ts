@@ -41,6 +41,8 @@ import left from "../assets/icons/toggleRight.png";
 import read from "../assets/icons/read.png";
 import unread from "../assets/icons/unread.png";
 import bell from "../assets/icons/bell.png";
+import leftAr from "../assets/icons/leftAr.png";
+import rightAr from "../assets/icons/rightAr.png";
 
 
 const icons ={
@@ -87,6 +89,8 @@ const icons ={
     read,
     unread,
     bell,
+    leftAr,
+    rightAr,
 
 
 

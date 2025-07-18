@@ -60,31 +60,16 @@
 
 // export default SettingsCard;
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Settings } from 'lucide-react';
+import { useTheme } from '@/contexts/ThemeContext';
 
 const ThemeCard: React.FC = () => {
-  const [systemTheme, setSystemTheme] = useState(true);
-  const [lightMode, setLightMode] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const { theme, setTheme } = useTheme();
 
-  const handleSystemToggle = () => {
-    setSystemTheme(true);
-    setLightMode(false);
-    setDarkMode(false);
-  };
-
-  const handleLightToggle = () => {
-    setSystemTheme(false);
-    setLightMode(true);
-    setDarkMode(false);
-  };
-
-  const handleDarkToggle = () => {
-    setSystemTheme(false);
-    setLightMode(false);
-    setDarkMode(true);
-  };
+  const handleSystemToggle = () => setTheme('system');
+  const handleLightToggle = () => setTheme('light');
+  const handleDarkToggle = () => setTheme('dark');
 
   return (
     <div className="flex w-[293px] h-[123px] bg-white m-4 rounded-xl shadow-md max-w-md overflow-hidden cursor-pointer">
@@ -100,7 +85,7 @@ const ThemeCard: React.FC = () => {
             className=" ml-16 w-10 h-5 rounded-full bg-gray-300 checked:bg-green-500 appearance-none relative transition-all duration-300
              before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:w-4 before:h-4 before:rounded-full 
              before:bg-white before:transition-all before:duration-300 checked:before:translate-x-5"
-            checked={systemTheme}
+            checked={theme === 'system'}
             onChange={handleSystemToggle}
           />
         </div>
@@ -111,7 +96,7 @@ const ThemeCard: React.FC = () => {
              className="w-10 h-5 rounded-full bg-gray-300 checked:bg-green-500 appearance-none relative transition-all duration-300
              before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:w-4 before:h-4 before:rounded-full 
              before:bg-white before:transition-all before:duration-300 checked:before:translate-x-5"
-            checked={lightMode}
+            checked={theme === 'light'}
             onChange={handleLightToggle}
           />
         </div>
@@ -122,7 +107,7 @@ const ThemeCard: React.FC = () => {
              className="w-10 h-5 rounded-full bg-gray-300 checked:bg-green-500 appearance-none relative transition-all duration-300
              before:content-[''] before:absolute before:top-0.5 before:left-0.5 before:w-4 before:h-4 before:rounded-full 
              before:bg-white before:transition-all before:duration-300 checked:before:translate-x-5"
-            checked={darkMode}
+            checked={theme === 'dark'}
             onChange={handleDarkToggle}
           />
         </div>

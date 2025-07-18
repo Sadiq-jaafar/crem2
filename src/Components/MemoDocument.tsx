@@ -80,10 +80,10 @@ const MemoDocument = ({ settings = { font: 'inter', fontWeight: 'normal', fontSi
 
   return (
     <>
-      <div className="bg-white p-6 shadow-sm border border-gray-200 rounded-sm min-h-[calc(100vh-8rem)]" style={documentStyle}>
+      <div className="bg-white dark:bg-gray-900 p-6 shadow-sm border border-gray-200 dark:border-gray-700 rounded-sm min-h-[calc(100vh-8rem)] transition-colors" style={documentStyle}>
         <div className="flex flex-col justify-center items-center mb-4 gap-[7px]" >
           <MemoLogo />
-          <div className="text-gray-500  text-[12px] mt-2">REAL ESTATE & CONSTRUCTION</div>
+          <div className="text-gray-500 dark:text-gray-300 text-[12px] mt-2">REAL ESTATE & CONSTRUCTION</div>
           <h1 className="text-[16px] font-semibold mt-4 ">INTERNAL MEMO</h1>
         </div>
 
@@ -91,7 +91,7 @@ const MemoDocument = ({ settings = { font: 'inter', fontWeight: 'normal', fontSi
           <div className="text-sm">
             <strong>REF:</strong> 
             <span 
-              className="cursor-pointer hover:bg-gray-50 px-1 py-0.5 rounded ml-1"
+              className="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 px-1 py-0.5 rounded ml-1 transition-colors"
               onClick={handleRefClick}
             >
               {refField}
@@ -106,7 +106,7 @@ const MemoDocument = ({ settings = { font: 'inter', fontWeight: 'normal', fontSi
               <div 
                 className={`flex-1 ${
                   field.label !== 'Date:' && field.label !== 'From:' 
-                    ? 'cursor-pointer hover:bg-gray-50 px-1 py-0.5 rounded' 
+                    ? 'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 px-1 py-0.5 rounded transition-colors' 
                     : ''
                 }`}
                 onClick={() => handleFieldClick(field, index)}
@@ -117,7 +117,7 @@ const MemoDocument = ({ settings = { font: 'inter', fontWeight: 'normal', fontSi
           ))}
         </div>
 
-        <div className="border-t border-b border-gray-300 py-4 mb-4">
+        <div className="border-t border-b border-gray-300 dark:border-gray-700 py-4 mb-4 transition-colors">
           <div className="whitespace-pre-line">{content}</div>
         </div>
       </div>

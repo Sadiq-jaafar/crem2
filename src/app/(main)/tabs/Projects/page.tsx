@@ -27,7 +27,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="max-h-[calc(100vh-50px)] overflow-auto scrollbar-none">
+    <div className="max-h-[calc(100vh-50px)] overflow-auto scrollbar-none bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
       <ProjectCard projects={projectEntries} onProjectClick={handleProjectClick} />
     </div>
   )
