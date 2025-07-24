@@ -94,6 +94,9 @@ function Header() {
   const onBack = () => {
     navigation.back();
   }
+  const onForward = () => {
+    navigation.forward();
+  }
 
   const toggleDropdown = (): void => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -141,7 +144,7 @@ function Header() {
         <div className="flex items-center relative">
           <button
             onClick={toggleDropdown}
-            className="flex items-center pl-[1.5px] w-4 h-8 text-gray-700 font-bold text-sm hover:bg-gray-400 rounded-md transition-colors"
+            className="flex items-center justify-center pl-[1.5px] w-5 h-10 text-gray-700 font-bold text-sm hover:bg-gray-200 rounded-md transition-colors"
             aria-expanded={isDropdownOpen}
             aria-haspopup="true"
           >
@@ -149,18 +152,25 @@ function Header() {
           </button>
 
           {isDropdownOpen && (
-            <div className="absolute right-0 top-full mt-1 2xl:w-[200px] 2xl:h-[200px] w-40 bg-white rounded-md shadow-lg z-10">
+            <div className="absolute right-0 top-full mt-1 2xl:w-[200px] 2xl:h-[200px] w-50 bg-white rounded-md shadow-lg z-10">
+              <div className="flex items-center justify-center text-center text-gray-700 font-bold text-sm hover:bg-gray-200 rounded-md transition-colors">Stations</div>
               <button
                 onClick={() => selectLogo(1)}
                 className="w-full text-left h-[50%] px-4 2xl:text-[50px] py-2 mb text-sm text-gray-700 hover:bg-gray-100 flex items-center"
               >
-                Logo 1
+                Rural Homes Limited
               </button>
               <button
                 onClick={() => selectLogo(2)}
                 className="w-full text-left h-[50%] px-4 py-2 2xl:text-[50px] text-sm text-gray-700 hover:bg-gray-100 flex items-center"
               >
-                Logo 2
+                Homes Group Limited
+              </button>
+              <button
+                onClick={() => selectLogo(2)}
+                className="w-full text-left h-[50%] px-4 py-2 2xl:text-[50px] text-sm text-gray-700 hover:bg-gray-100 flex items-center"
+              >
+                Add New Station
               </button>
             </div>
           )}
