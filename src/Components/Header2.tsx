@@ -197,16 +197,18 @@ const Header2: React.FC = () => {
              <Image
                src={icons.leftAr}
               alt="Left Arrow"
-             width={20}
-            height={20}
+              className="w-5 h-5 sm:w-7 sm:h-7 md:w-10 md:h-10"
+              width={40}
+              height={40}
             />
           </button>
           <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
              <Image
                     src={icons.rightAr}
-                    alt="Left Arrow"
-                    width={20}
-                    height={20}
+                    alt="Right Arrow"
+                    className="w-5 h-5 sm:w-7 sm:h-7 md:w-10 md:h-10"
+                    width={40}
+                    height={40}
                   />
           </button>
         </div>

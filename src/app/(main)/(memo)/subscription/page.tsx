@@ -1,6 +1,7 @@
 "use client"
 import Header3 from '@/Components/Header3';
 import React, { useState } from 'react';
+import PaymentDialog from '@/Components/PaymentDialog';
 
 const plans = [
   {
@@ -45,12 +46,19 @@ const plans = [
 
 const SubscriptionPlans = () => {
   const [currentPlans, setCurrentPlans] = useState(plans);
+  const [showDialog, setShowDialog] = useState(false);
+  // Removed selectedPlan as it is not used
 
   const handlePlanChange = (planName: string) => {
     setCurrentPlans(currentPlans.map(plan => ({
       ...plan,
       isCurrent: plan.name === planName
     })));
+  };
+
+  // Remove planName parameter since it's not used
+  const handleChoosePlan = () => {
+    setShowDialog(true);
   };
 
   return (
@@ -91,7 +99,7 @@ const SubscriptionPlans = () => {
               </p>
               <button
                 disabled={plan.isCurrent}
-                
+                onClick={e => { e.stopPropagation(); handleChoosePlan(); }}
                 className={`mt-4 w-full py-2 rounded border ${
                   plan.isCurrent
                     ? 'bg-[#09342D] text-white'
@@ -109,10 +117,11 @@ const SubscriptionPlans = () => {
         <p className="font-semibold">Your Current Subscription</p>
         <p className="text-sm">Plan: Pro</p>
         <p className="text-sm">Renewal Date: dd/mm/yyyy</p>
-        <button className="mt-4 px-6 py-2 bg-white border rounded hover:bg-[#09342D] hover:text-gray-100">
+        <button className="mt-4 px-6 py-2 bg-white border rounded hover:bg-[#09342D] hover:text-gray-100" onClick={() => setShowDialog(true)}>
           Upgrade
         </button>
       </div>
+      <PaymentDialog open={showDialog} onClose={() => setShowDialog(false)} />
     </div>
   );
 };

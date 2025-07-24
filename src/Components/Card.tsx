@@ -51,9 +51,14 @@ interface CardProps {
   icon: React.ReactNode;
   items?: string[];
   link: string;
+  itemIcon?: React.ReactNode;
+  itemIconAndText?: React.ReactNode;
+  firstItemClassName?: string; // Add this line
+  firstItemIconAndTextClassName?: string; // Add this line
+  firstItemIconAndText?: React.ReactNode; // Add this line
 }
 
-const Card = ({ title, icon, link , items = [] }: CardProps) => {
+const Card = ({ title, icon, link , items = [], itemIcon, itemIconAndText, firstItemClassName, firstItemIconAndTextClassName, firstItemIconAndText }: CardProps) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [isPinned, setIsPinned] = useState(false);
 
@@ -74,7 +79,7 @@ const Card = ({ title, icon, link , items = [] }: CardProps) => {
   }
 
   return (
-    <div className='w-110 h-45 border border-gray-300 rounded-lg overflow-hidden flex flex-col'>
+    <div className=' card flex-grow h-45 border 2xl:flex-1/3 2xl:h-150 border-gray-300 rounded-lg overflow-hidden flex flex-col'>
       {/* Header Section with icon next to title */}
       <div 
         className="flex justify-between items-center cursor-pointer"
@@ -129,14 +134,20 @@ const Card = ({ title, icon, link , items = [] }: CardProps) => {
             {/* className="divide-y divide-gray-200 */}
             {items.map((item, index) => (
               <li
-                key={index}
-                className=" px-4 py-3 cursor-pointer flex items-center hover:bg-[#09342D] justify-between"
+                key={`${item}-${index}`}
+                className={` px-4 py-3 cursor-pointer flex items-center text-white hover:bg-[#09342D] justify-between${index === 0 && firstItemClassName ? ` ${firstItemClassName}` : ''}`}
               >
-                <div className="text-gray-700 text-xs flex items-center gap-2">
-                  <FaCircle className="text-gray-400" size={8} />
+                <div className="text-gray-white flex items-center gap-2">
+                  {itemIcon}
                   {item} #{index + 1}
                 </div>
-                <FaChevronRight className="text-gray-400" size={12} />
+                {index === 0 && firstItemIconAndText ? (
+                  firstItemIconAndText
+                ) : index === 0 && firstItemIconAndTextClassName ? (
+                  <div className={firstItemIconAndTextClassName}>{itemIconAndText}</div>
+                ) : (
+                  itemIconAndText
+                )}
               </li>
             ))}
           </ul>
@@ -146,6 +157,7 @@ const Card = ({ title, icon, link , items = [] }: CardProps) => {
           </div>
         )}
       </div>
+      
     </div>
   );
 };

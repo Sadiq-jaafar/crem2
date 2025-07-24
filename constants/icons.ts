@@ -43,6 +43,9 @@ import unread from "../assets/icons/unread.png";
 import bell from "../assets/icons/bell.png";
 import leftAr from "../assets/icons/leftAr.png";
 import rightAr from "../assets/icons/rightAr.png";
+import mastercard from "../assets/icons/master card.png";
+import card from "../assets/icons/card.png";
+import visa from "../assets/icons/visa.png";
 
 
 const icons ={
@@ -91,7 +94,9 @@ const icons ={
     bell,
     leftAr,
     rightAr,
-
+    mastercard,
+    card,
+    visa,
 
 
 
