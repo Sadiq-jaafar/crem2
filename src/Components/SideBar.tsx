@@ -139,7 +139,7 @@ const SideBar: React.FC = () => {
 
       <div className="items-center align-center flex flex-col">
         <Image src={images.Profile} alt="Profile icon" width={40} height={40} />
-        <span className={`ml-2 ${isCollapsed ? 'hidden' : 'block'}`}>Profile</span>
+        <span className={` text-zinc-50 ml-2 ${isCollapsed ? 'hidden' : 'block'}`}>Profile</span>
       </div>
 
       {/* Toggle Button */}

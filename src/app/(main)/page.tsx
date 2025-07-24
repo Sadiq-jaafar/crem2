@@ -47,7 +47,7 @@ const Page = () => {
       <Header />
       <div className="h-[calc(100vh-26vh)] w-[calc(100%-23%)] flex-row gap-2 ml-2 mt-1 overflow-hidden">
         <div 
-          className="grid grid-cols-1 sm:grid-cols-2 gap-2 2xl:grid-cols-3 overflow-hidden hover:overflow-y-auto scrollbar-hide "
+          className=" h-[calc(100vh-26vh)] grid grid-cols-1 sm:grid-cols-2 gap-2 2xl:grid-cols-3 overflow-hidden hover:overflow-y-auto scrollbar-hide "
           style={{ 
             // height: "400px",
             scrollbarWidth: 'none',  // Firefox
@@ -57,7 +57,7 @@ const Page = () => {
           <Card 
           link="/notifications"  title="Notifications" icon={<FaBell size={16} />} items={Array(5).fill('New notification')} itemIconAndText={<Image src={icons.Tenant} alt="docs" width={16} height={16} />} />
            <Card link="/memolist" title="Memo" icon={<Image src={icons.memo} alt="docs" width={16} height={16} />} items={Array(3).fill('New message')} itemIcon={<Image src={icons.incoming} alt="docs" width={16} height={16} />} itemIconAndText={<Image src={icons.unread} alt="docs" width={16} height={16} />} />
-          <Card link="/tabs/Departments" title="Departments" icon={<Image src={icons.Departments} alt="dept" width={16} height={16} />} items={Array(4).fill('Pending task')} itemIconAndText={<div className='flex flex-row gap-1'><span>2</span><span/><Image src={icons.Tenant} alt="docs" width={16} height={16} /></div>} />
+          <Card link="/tabs/Departments" title="Departments" icon={<Image src={icons.Departments} alt="dept" width={16} height={16} />} items={Array(4).fill('Pending task')} itemIconAndText={<div className='flex flex-row gap-1'><span>2</span><span/><Image src={icons.Tenant} alt="docs" width={16} height={10} /></div>} />
           <Card link="/tabs/Clients" title="Clients" icon={<Image src={icons.Client} alt="clients" width={16} height={16} />} items={Array(2).fill('System alert')} itemIconAndText={<div className='flex flex-row gap-1'><span>TCA-7/KDM</span><span/><Image src={icons.Client} alt="docs" width={16} height={16} /></div>} />
           <Card link="/allocations" title="Allocations" icon={<Image src={icons.Tenant} alt="docs" width={16} height={16} />} items={Array(6).fill('Upcoming event')} itemIconAndText={<Image src={icons.Tenant} alt="docs" width={16} height={16} />}/>
           <Card link="/tenants" title="Tenants" icon={<Image src={icons.Tenant} alt="docs" width={16} height={16} />} items={Array(6).fill('Upcoming event')} itemIconAndText={<div className='flex flex-row gap-1'><span>TCA-7/KDM</span><span/><Image src={icons.Client} alt="docs" width={16} height={16} /></div>} />
