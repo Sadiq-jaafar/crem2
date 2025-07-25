@@ -168,11 +168,21 @@ const Header2: React.FC = () => {
   const pathname = usePathname();
   const { selectedLogo, setSelectedLogo } = useLogo();
   const [isDropdownOpen, setIsDropdownOpen] = React.useState<boolean>(false);
+  const [canGoBack, setCanGoBack] = React.useState(false);
+  const [canGoForward, setCanGoForward] = React.useState(false);
 
   const navigation = useRouter();
 
+  React.useEffect(() => {
+    setCanGoBack(window.history.length > 1);
+    setCanGoForward(!!window.history.state && typeof window.history.state.idx === 'number' && window.history.state.idx < window.history.length - 1);
+  }, []);
+
   const onBack= ()=>{
     navigation.back()
+  }
+  const onForward = () => {
+    navigation.forward();
   }
 
   const toggleDropdown = (): void => {
@@ -193,24 +203,30 @@ const Header2: React.FC = () => {
         <div className="flex space-x-1">
           <button 
           onClick={onBack}
-          className="text-gray-700 hover:bg-gray-400 p-1 rounded">
-             <Image
-               src={icons.leftAr}
-              alt="Left Arrow"
-              className="w-5 h-5 sm:w-7 sm:h-7 md:w-10 md:h-10"
-              width={40}
-              height={40}
-            />
-          </button>
-          <button className="text-gray-700 hover:bg-gray-400 p-1 rounded">
-             <Image
-                    src={icons.rightAr}
-                    alt="Right Arrow"
-                    className="w-5 h-5 sm:w-7 sm:h-7 md:w-10 md:h-10"
-                    width={40}
-                    height={40}
-                  />
-          </button>
+          className="text-gray-700 hover:bg-gray-400 p-1 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={!canGoBack}
+>
+  <Image
+    src={icons.leftAr}
+    alt="Left Arrow"
+    className='2xl:w-15 2xl:h-15'
+    width={20}
+    height={20}
+  />
+</button>
+<button 
+  onClick={onForward}
+  className="text-gray-700 hover:bg-gray-400 p-1 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+  disabled={!canGoForward}
+>
+  <Image
+    src={icons.rightAr}
+    alt="Right Arrow"
+    className='2xl:w-15 2xl:h-15'
+    width={20}
+    height={20}
+  />
+</button>
         </div>
 
         <nav className="flex items-center space-x-1">
