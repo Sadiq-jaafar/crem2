@@ -41,7 +41,7 @@ const SideBar: React.FC = () => {
         {/* Navigation Links */}
         <div className="flex flex-col items-center left-0 space-y-2">
 
-          <div className={`hover:bg-[#77898D] 2xl:mt-4 2xl:mb-4 ${isCollapsed ? 'w-[5%] itmes-center justify-center pl-5' : 'w-[9.5%] '} h-[32px] m-0  py-[3px] fixed  left-0 items-center justify-center ${isActive('/') ? 'bg-[#77898D]' : ''}`}>
+          <div className={`hover:bg-[#77898D] 2xl:mt-4 2xl:mb-4 ${isCollapsed ? 'w-[5%] itmes-center justify-center pl-5' : 'w-[9.5%] '} h-[32px] m-0  py-[3px] pl-[11px] fixed  left-0 items-center justify-center ${isActive('/') ? 'bg-[#77898D]' : ''}`}>
 
           <Link 
             href="/" 

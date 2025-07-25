@@ -177,13 +177,13 @@ function Header() {
 
           <div className=" mb-0 ">
             {selectedLogo === 1 ? (
-              <Image src={images.HeaderLogo1} alt="Logo 1" width={110} height={250} className='2xl:w-[380px] 2xl:h-[370px]' />
+              <Image src={images.HeaderLogo1} alt="Logo 1" width={110} height={250} className='2xl:w-[380px] 2xl:h-[370px] xl:w-[150px] xl:h-[95px]' />
             ) : (
-              <Image src={images.HeaderLogo2} alt="Logo 2" width={110} height={200} className='2xl:w-[380px] 2xl:h-[370px]' />
+              <Image src={images.HeaderLogo2} alt="Logo 2" width={110} height={200} className='2xl:w-[380px] 2xl:h-[370px] xl:w-[150px] xl:h-[95px]' />
             )}
           </div>
         </div>
-        <div className={`justify-between align-bottom relative px-2 mx-8 ${selectedLogo === 1 ?"m-[37px] 2xl:mt-0":"mt-0"}  w-full m flex flex-row" style={{color: primary}}`}>
+        <div className={`justify-between align-bottom relative px-2 mx-8 ${selectedLogo === 1 ?"m-[0px] 2xl:mt-0":"mt-0"}  w-full m flex flex-row" style={{color: primary}}`}>
           <div className='font-bold text-2xl 2xl:text-[80px] mt-2'>Welocme, Ibrahim!</div>
           <div className='font-bold mt-4 2xl:text-[80px]'>Admistration</div>
         </div>
