@@ -30,6 +30,7 @@
 // export default page
 
 // page.tsx
+"use client"
 import Card from '@/Components/Card'
 import FeedCard from '@/Components/FeedCard'
 import Header from '@/Components/Header'
@@ -40,12 +41,29 @@ import {
 } from 'react-icons/fa'
 import Image from 'next/image'
 import icons from '../../../constants/icons'
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
+  const navigation = useRouter();
+  const [canGoBack, setCanGoBack] = React.useState(false);
+  const [canGoForward, setCanGoForward] = React.useState(false);
+
+  React.useEffect(() => {
+    setCanGoBack(window.history.length > 1);
+    setCanGoForward(!!window.history.state && typeof window.history.state.idx === 'number' && window.history.state.idx < window.history.length - 1);
+  }, []);
+
+  const onBack = () => {
+    navigation.back();
+  };
+  const onForward = () => {
+    navigation.forward();
+  };
+
   return (
     <div className='relative flex flex-col'>
       <Header />
-      <div className="h-[calc(100vh-26vh)] w-[calc(100%-23%)] flex-row gap-2 ml-2 mt-1 overflow-hidden">
+      <div className="h-[calc(100vh-26vh)] w-[calc(100%-23%)] flex-row gap-2 ml-2 mt-5 overflow-hidden">
         <div 
           className=" h-[calc(100vh-26vh)] grid grid-cols-1 sm:grid-cols-2 gap-2 2xl:grid-cols-3 overflow-hidden hover:overflow-y-auto scrollbar-hide "
           style={{ 
@@ -82,6 +100,35 @@ const Page = () => {
         <div className="mt-0 flex">
           <FeedCard />
         </div>
+      </div>
+      {/* Fixed bottom navigation buttons */}
+      <div className="fixed left-1/2 -translate-x-1/2 bottom-6 flex space-x-4 z-50">
+        <button
+          onClick={onBack}
+          className="text-gray-700 hover:bg-gray-400 p-2 rounded-full shadow-lg disabled:opacity-50 disabled:cursor-not-allowed bg-white"
+          disabled={!canGoBack}
+        >
+          <Image
+            src={icons.leftAr}
+            alt="Left Arrow"
+            className="2xl:w-15 2xl:h-15"
+            width={20}
+            height={20}
+          />
+        </button>
+        <button
+          onClick={onForward}
+          className="text-gray-700 hover:bg-gray-400 p-2 rounded-full shadow-lg disabled:opacity-50 disabled:cursor-not-allowed bg-white"
+          disabled={!canGoForward}
+        >
+          <Image
+            src={icons.rightAr}
+            alt="Right Arrow"
+            className="2xl:w-15 2xl:h-15"
+            width={20}
+            height={20}
+          />
+        </button>
       </div>
     </div>
   )

@@ -46,6 +46,8 @@ import rightAr from "../assets/icons/rightAr.png";
 import mastercard from "../assets/icons/master card.png";
 import card from "../assets/icons/card.png";
 import visa from "../assets/icons/visa.png";
+import add from "../assets/icons/add.png";
+import search from "../assets/icons/search.png";
 
 
 const icons ={
@@ -97,7 +99,8 @@ const icons ={
     mastercard,
     card,
     visa,
-
+    add,
+    search,
 
 
 }

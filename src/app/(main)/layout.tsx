@@ -5,6 +5,7 @@ import "../globals.css";
 import Layout from "@/Components/layOut";
 import { LogoProvider } from '@/Components/LogoContext';
 import ThemeProviderWrapper from "@/Components/ThemeProviderWrapper";
+import BottomDialogButton from "@/Components/BottomDialogButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,6 +35,7 @@ export default function RootLayout({
             <Layout>
               {children}
             </Layout>
+            <BottomDialogButton />
           </LogoProvider>
         </ThemeProviderWrapper>
       </body>

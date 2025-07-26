@@ -1,36 +1,32 @@
-import React from 'react';
+import React from "react";
 
 interface SuccessDialogProps {
   open: boolean;
   onClose: () => void;
+  title?: string;
+  message: string;
+  buttonText?: string;
+  onNavigate?: () => void;
 }
 
-const SuccessDialog: React.FC<SuccessDialogProps> = ({ open, onClose }) => {
+const SuccessDialog: React.FC<SuccessDialogProps> = ({ open, onClose, title = "Success !!", message, buttonText = "Ok", onNavigate }) => {
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30">
-      <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-8 flex flex-col items-center relative">
-        <div className="mb-4">
-          <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="60" cy="60" r="54" stroke="#09342D" strokeWidth="8" fill="none" />
-            <path d="M40 65L55 80L80 50" stroke="#09342D" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <h2 className="text-3xl font-bold text-[#09342D] mb-2 text-center">Success !!</h2>
-        <p className="text-center text-gray-700 mb-6">
-          Your Subscription Has Been<br />
-          Successfully Upgraded To The<br />
-          Enterprise Plan. Your Next Renewal<br />
-          Date Is DD/MM/YYYY.<br />
-          Thank You For Choosing Us — We’re<br />
-          Committed To Delivering The Highest<br />
-          Level Of Service And Value.
-        </p>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-opacity-20">
+      <div className="bg-white rounded-2xl shadow-xl p-8 w-[350px] flex flex-col items-center">
+        <div className="text-[80px] text-[#09342D] mb-2">✔️</div>
+        <div className="text-2xl font-bold text-[#09342D] mb-2 text-center">{title}</div>
+        <div className="text-center text-gray-700 mb-6 whitespace-pre-line">{message}</div>
         <button
-          className="w-2/3 py-3 rounded-full bg-[#09342D] text-white text-2xl font-semibold hover:bg-[#0b453a]"
-          onClick={onClose}
+          className="bg-[#09342D] text-white text-xl font-semibold px-10 py-2 rounded-full focus:outline-none hover:bg-[#0b463a]"
+          onClick={() => {
+            onClose();
+            if (onNavigate) {
+              onNavigate();
+            }
+          }}
         >
-          Ok
+          {buttonText}
         </button>
       </div>
     </div>
