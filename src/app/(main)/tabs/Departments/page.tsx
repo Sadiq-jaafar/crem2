@@ -31,7 +31,7 @@ const Departments = () => {
     navigate.push(`/${project.id}/department`);
   };
   return (
-    <div className="grid grid-cols-3 w-[1000px] max-h-[calc(100vh-50px)] overflow-auto scrollbar-none bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
+    <div className="grid grid-cols-3 w-full h-full overflow-auto scrollbar-none bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors">
      <DepartmentCard  departments={departmentEntries} onDepartmentClick={handleDepartmentClick} />
      
      </div>)}
